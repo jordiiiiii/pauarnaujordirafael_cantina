@@ -2,5 +2,7 @@
     <section class = "main">
         <div class = "empaquetador">
             <div class = "missatge">
-                <h1>Menú</h1>
+                <h1>Contacte</h1>
             </div>
+        </div>
+    </section>
