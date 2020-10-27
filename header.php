@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inici</title>
+    <title>Inicii</title>
     <link rel = "stylesheet" href = "style_general.css">
 </head>
 <body>
