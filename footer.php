@@ -16,5 +16,11 @@
         </footer>
         <!-- ========== End Footer ========== -->
     </div>
+    <!-- third party js -->
+    <script src="js/validacions_formulari.js"></script>
+
+
+    
+    <!-- third party js ends -->
 </body>
 </html>
