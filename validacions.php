@@ -9,6 +9,10 @@
     table td {
         text-align: center;
     }
+    .missatgeAlerta {
+        display:inline;
+        color: red;
+    }
     </style>
     <script src="js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
 
@@ -46,15 +50,26 @@
 <h1>DATOS DE USUARIO<h1>
 
 <form action='1.7RafaelGarcia.php' method='POST'>
+  <div>
   <label for="nom">Nom:</label>
   <input type="text" id="nom" name="model">
+  <p class="missatgeAlerta">Camp Incorrecte*</p>
+  </div>
   <br>
+  <div>
   <label for="telefon">Telefon:</label>
   <input type="text" id="telefon" name="model">
+  <p class="missatgeAlerta">Camp Incorrecte*</p>
+  </div>
   <br>
+  <div>
   <label for="correu">Correu:</label>
   <input type="text" id="correu" name="model">
+  <p class="missatgeAlerta">Camp Incorrecte*</p>
+  </div>
 </form>
+
+<button type="button" id="seguent">Següent</button>
 
 </div>
 </body>
