@@ -18,8 +18,6 @@
 
 </head>
 <body>
-<img class="logo" src="img/logo.jpg" alt="Logo InsPedralbes">
-<br><br>
 <h1>COMANDA<h1>
 <table border="2">
   <tr>

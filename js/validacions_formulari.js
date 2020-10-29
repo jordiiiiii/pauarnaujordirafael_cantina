@@ -5,6 +5,41 @@ function ocultarMissatges () {
     }
 }
 
+function validacioNom () {
+    let missatges = document.getElementsByClassName("missatgeAlerta");
+    let caixaText = document.getElementsByTagName("input");
+            if (!caixaText[0].value.length == 0){
+                missatges[0].style.display = 'none';
+            } else {
+                missatges[0].style.display = 'inline';           
+            }
+}
+function validacioTelefon () {
+         let missatges = document.getElementsByClassName("missatgeAlerta");
+         let caixaText = document.getElementsByTagName("input");
+         let test = /^\d{9}$/;
+         if (test.test(caixaText[1].value || !caixaText[1].value.length == 0)) {
+             //console.info("El numero esta be escrit.");
+             missatges[1].style.display = 'none';
+         } else {
+             //console.info("El numero esta malament escrit.");
+             missatges[1].style.display = 'inline';
+         }   
+}
+function validacioCorreu () {
+        let missatges = document.getElementsByClassName("missatgeAlerta");
+        let caixaText = document.getElementsByTagName("input");
+        let test = /^[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
+        if (test.test(caixaText[2].value) || !caixaText[2].value.length == 0) {
+            //console.info("El correu esta be escrit.");
+            missatges[2].style.display = 'none';
+        } else {
+            //console.info("El correu esta malament escrit.");
+            missatges[2].style.display = 'inline';
+        }   
+}
+
+
 
 window.onload = function() {
 
@@ -18,11 +53,6 @@ window.onload = function() {
             unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
             
         }
-        /*
-        for (let index = 0; index < unidadesParseadas.length; index++) {
-            console.info(unidadesParseadas[index]);  
-        }
-        */
 
         let precios = document.getElementsByClassName("precio");
         let preciosParseadas = [];
@@ -43,64 +73,43 @@ window.onload = function() {
         let tablaTotal = document.getElementById("tablaTotal");
         tablaTotal.innerHTML = codigoTablaTotal;
 
+        document.getElementById('nom').addEventListener("blur", function(){
+            validacioNom ();
+        }) 
+
         document.getElementById('telefon').addEventListener("blur", function(){
-            //console.info(this.value);
-            let missatges = document.getElementsByClassName("missatgeAlerta");
-            let test = /^\d{9}$/;
-            if (test.test(this.value)) {
-                //console.info("El numero esta be escrit.");
-                missatges[1].style.display = 'none';
-            } else {
-                //console.info("El numero esta malament escrit.");
-                missatges[1].style.display = 'inline';
-            }     
+            validacioTelefon ();
         })   
 
         document.getElementById('correu').addEventListener("blur", function(){
-            //console.info(this.value);
-            let missatges = document.getElementsByClassName("missatgeAlerta");
-            let test = /^[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
-            if (test.test(this.value)) {
-                //console.info("El correu esta be escrit.");
-                missatges[2].style.display = 'none';
-            } else {
-                //console.info("El correu esta malament escrit.");
-                missatges[2].style.display = 'inline';
-            }     
-        })   
-
-        document.getElementById('nom').addEventListener("blur", function(){
-            let missatges = document.getElementsByClassName("missatgeAlerta");
-            console.info(this.value);
-            if (!this.value.length == 0){
-                console.info("CAMP OMPLERT");
-                missatges[0].style.display = 'none';
-            } else {
-                console.info("CAMP BUIT");
-                missatges[0].style.display = 'inline';           
-            }
-        })   
-
-         
+            validacioCorreu ();
+        })            
 
         document.getElementById('seguent').addEventListener("click", function(){
             //console.info("Boto següent.");  
+            validacioNom ();
+            validacioTelefon ();
+            validacioCorreu ();
             let missatges = document.getElementsByClassName("missatgeAlerta");
-            let caixaText = document.getElementsByTagName("input");
+            let pasarSeguent = false;         
 
             for (let index = 0; index < missatges.length; index++) {
-                //console.info(missatges[index].style.display);
-                /*if (missatges[index].style.display != "none") {
-                    console.info("ALGO ANDA MAL");
-                }*/
-                //console.info(caixaText[index].textContent);
-                if (caixaText[index].textContent === '') {
-                   // console.info("CAMPS BUITS");
-                    missatges[index].style.display = 'inline';
-                } else {
-                    missatges[index].style.display = 'none';
+                if (missatges[index].style.display != "none") {
+                    //console.info("ALGO ANDA MAL");
+                    pasarSeguent = false;
+                    index = missatges.length;
+                } else { 
+                    index == missatges.length;
+                    pasarSeguent = true;
                 }
             }
+            console.info(pasarSeguent);
+            if (pasarSeguent) {
+                console.info("PASAR A LA OTRA PAGINA");
+            } else {
+                console.info("NO PASAS A LA OTRA PAGINA");
+            }
+            
         })   
 };
 
