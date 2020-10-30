@@ -91,6 +91,7 @@ window.onload = function() {
             validacioTelefon ();
             validacioCorreu ();
             let missatges = document.getElementsByClassName("missatgeAlerta");
+            let missatges = document.getElementsByClassName("missatgeAlerta");
             let pasarSeguent = false;         
 
             for (let index = 0; index < missatges.length; index++) {
@@ -105,6 +106,8 @@ window.onload = function() {
             }
             console.info(pasarSeguent);
             if (pasarSeguent) {
+                let caixaText = document.getElementsByTagName("input");
+                
                 console.info("PASAR A LA OTRA PAGINA");
             } else {
                 console.info("NO PASAS A LA OTRA PAGINA");
