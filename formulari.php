@@ -22,39 +22,34 @@
             <div class="content">
                 <!-- ========== Codi Rafael Start ========== -->
                 <div class="main-row">
-            <div class="content">
+                    <div class="content">
                 <!-- ========== Codi Jordi Start ========== -->
                 <!-- ========== Row Present ========== -->
-                <div class="content-row-present">
-                    <h2>BENVINGUTS</h2>
-                    <h2>LA TEVA COMANDA</h2>
-                    <h2>DETALLS ENCARREC</h2>
-                    <h2>CONFIRMACIO</h2>
-                </div>
-                <?php include('validacions.php');?>
+                        <div class="content-row-present">
+                            <h2>BENVINGUTS</h2>
+                            <h2>LA TEVA COMANDA</h2>
+                            <h2>DETALLS ENCARREC</h2>
+                            <h2>CONFIRMACIO</h2>
+                        </div>  
+                        <div class="content-box">
+                        
+                        <?php include('validacions.php');?>
 
-                <!--<div id="comanda"></div>-->
-
-
+                        </div>
                 <!-- ========== End Codi Rafael ============ -->
-            </div>
-        </div>
+                    </div>
+                </div>
+
         <!-- ============================================================== -->
         <!-- End Page Content -->
         <!-- ============================================================== -->
         <!-- ========== Footer Start ========== -->
-        <?php include('footer.php');?>
-        <!-- ========== End Footer ========== -->
-    </div>
-    <!-- third party js -->
-    <script type="text/javascript">
-       /* let comanda = localStorage.getItem('comandaMenu');
-        console.log(JSON.parse(comanda));
-        comanda = JSON.parse(comanda);
-        document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
-        */
-    </script>
 
-    <!-- third party js ends -->
+        <!-- ========== End Footer ========== -->
+        </div>
+        <?php include('footer.php');?>
+
+    </div>
+
 </body>
 </html>
