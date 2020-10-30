@@ -1,6 +1,3 @@
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
         <!-- ========== Footer Start ========== -->
         <footer class="footer-row">
             <div class="footer-col-left">
@@ -15,12 +12,3 @@
             </div>
         </footer>
         <!-- ========== End Footer ========== -->
-    </div>
-    <!-- third party js -->
-    <script src="js/validacions_formulari.js"></script>
-
-
-    
-    <!-- third party js ends -->
-</body>
-</html>

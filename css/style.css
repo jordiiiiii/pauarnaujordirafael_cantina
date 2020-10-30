@@ -1,6 +1,6 @@
-/* =Reset
--------------------------------------------------------------- */
-
+/*=======================================================
+=            Section Reset                              =
+=======================================================*/
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -8,24 +8,40 @@
     margin-top: 0;
 }
 
-html,
-body,
-div{
-    margin: 0;
-    padding: 0;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
 }
 
-h1,
-h2,
-h3{
-    margin: 0;
-    padding: 0;
+button{
+    border: none;
+    font-family : inherit;
+    font-size: 1em;
 }
 
+/* html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}abbr,acronym{border:0;} */
 
-/* =Structure Desktop Page
--------------------------------------------------------------- */
+/*=====  End of Section Reset  ======*/
 
+
+
+/*=======================================================
+=            Structure Desktop Page                     =
+=======================================================*/
 :root {
     /* 01_FonsPagina */
     --main-bg-color: #F8F8FA;
@@ -37,12 +53,55 @@ h3{
     --main-color: #009FD6;
     /* 05_ColorGraphics */
     --main-graphic-color: #BDBDBD;
+
+    /* FontSize_H1 */
+    --h1-size: 24px;
+    /* FontSize_H2 */
+    --h2-size: 18px;
+    /* FontSize_H3 */
+    --h3-size: 24px;
+    /* FontSize_H4 */
+    --h4-size: 14px;
+
+    /* FontWeight_Thin */
+    --w1-font: 100;
+    /* FontWeight_Light */
+    --w2-font: 300;
+    /* FontWeight_Regular */
+    --w3-font: 400;
+    /* FontWeight_Medium */
+    --w4-font: 500;
+    /* FontWeight_bold */
+    --w5-font: 700;
+    /* FontWeight_black */
+    --w6-font: 900;
+
+    /* MarginVerticalRow */
+    --margin-vert: 80px;
+    /* MarginLateralCentralColumn */
+    --margin-hort: 64px;
 }
 
 html{
     background-color: var(--main-bg-color);
     color: var(--main-txt-color);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 14px;
+    font-weight: var(--w3-font);
+}
+
+h1{
+    font-size: var(--h1-size);
+}
+h2{
+    font-size: var(--h2-size);
+}
+h3{
+    font-size: var(--h3-size);
+}
+h4{
+    font-size: var(--h4-size);
 }
 
 .row-layout{
@@ -50,18 +109,27 @@ html{
     flex-direction: column;
     height: 100vh;
 }
+/*=====  End of Structure Desktop Page  ======*/
 
 
-/* =Structure Header
--------------------------------------------------------------- */
 
+/*=======================================================
+=            Structure Header                           =
+=======================================================*/
 .header-row{
     background-color: var(--main-bg-box-color);
-    height: 128px;
+    height: 112px;
     display: flex;
     padding: 16px 16px;
 }
 
+.header-row h2{
+    font-weight: var(--w2-font);
+    color: var(--main-graphic-color);
+}
+
+/* =Column Left
+------------------------------------------------- */
 .logo-col{
     flex: 1;
 }
@@ -70,6 +138,8 @@ html{
     height: 100%;
 }
 
+/* =Column Center
+------------------------------------------------- */
 .title-col{
     flex: 2;
     text-align: center;
@@ -79,6 +149,8 @@ html{
     align-items: flex-end;
 }
 
+/* =Column Right
+------------------------------------------------- */
 .info-col{
     flex: 1;
     display: flex;
@@ -90,14 +162,15 @@ html{
     text-decoration: none;
     margin-left: 8px;
 }
+/*=====  End of Structure Header  ======*/
 
 
-/* =Structure Content
--------------------------------------------------------------- */
 
+/*=======================================================
+=            Structure Content                          =
+=======================================================*/
 .main-row{
-    padding-top: 64px;
-    padding-bottom: 64px;
+    align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -106,30 +179,201 @@ html{
 
 .content{
     background-color: var(--main-bg-box-color);
-    min-width: 900px;
-    max-width: 1080px;
+    min-width: 960px;
+    max-width: 1120px;
     box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
 }
 
-/* .container{
-
+.content-box{
+    padding: var(--margin-hort) var(--margin-vert);
 }
 
-.box{
 
+/* =ROW PRESENT
+------------------------------------------------------ */
+/* =1st row
+--------------------------------------- */
+.content-row-present{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+}
+/* =All columns
+---------------------------------- */
+.content-row-present > h2{
+    flex: 1;
+    text-align: center;
+    padding: 22px 0px;
+    border-bottom: 1px solid var(--main-graphic-color);
 }
 
-.column{
-    
+.content-row-present h2{
+    font-weight: var(--w2-font);
+    color: var(--main-graphic-color);
 }
 
-.row{
+.content-row-present > h2:nth-child(2){
+    color: var(--main-color);
+    font-weight: var(--w4-font);
+    border-bottom: 2px solid var(--main-color);
+}
 
-} */
+/* =ROW TITLE
+------------------------------------------------------ */
+.content-row-title{
+    display: flex;
+    flex-direction: row;
+}
 
-/* =Structure Footer
--------------------------------------------------------------- */
+.content-row-title h3{
+    font-weight: var(--w4-font);
+}
 
+.title-left{
+    padding-bottom: 36px;
+    flex: 4;
+}
+
+.title-right{
+    padding-bottom: 36px;
+    margin-left: var(--margin-vert);
+    flex: 3;
+}
+
+/* =ROW MENU
+------------------------------------------------------ */
+.content-row-menu{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+/* =LEFT COLUMN
+------------------------------------------------- */
+.list-row-menu{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--margin-hort);
+    flex: 4;
+}
+
+.list-col-menu{
+    display: flex;
+    flex: 1;
+}
+.col-menu{
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex: 1;
+}
+.box-plat{
+    border: 1px solid var(--main-graphic-color);
+    max-width: 96px;
+    background-color: transparent;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 8px;
+    margin: 8px 4px 0px 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    font-size: 12px;
+    font-weight: var(--w2-font);
+    min-height: 96px;
+}
+
+.box-plat > p:nth-child(2){
+    font-size: 13px;
+    font-weight: var(--w3-font);
+}
+
+
+/* =RIGHT COLUMN
+------------------------------------------------- */
+.list-row-menu-price{
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    margin-left: var(--margin-vert);
+    margin-bottom: var(--margin-hort);
+    flex: 3;
+}
+.list-row-menu-price h4{
+    color: var(--main-color);
+    font-weight: var(--w2-font);
+    padding-bottom: 4px;
+}
+
+.list-row-menu-price > div{
+    flex: 1;
+    border-bottom: 1px solid var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* =1st row
+--------------------------------------- */
+.row-menu-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 16px, 0px, 32px, 0px;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+#primer-plat-name,
+#segon-plat-name,
+#postre-name {
+    max-width: 192px;
+}
+
+/* =ROW Flux
+------------------------------------------------------ */
+.content-row-flux-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 48px;
+}
+.back-index-butt{
+    height: 48px;
+    display: flex;
+    flex: 4;
+    text-align: start;
+}
+#back-to-index{
+    background-color: transparent;
+    color: var(--main-color);
+    align-items: center;
+}
+.send-order-butt{
+    background-color: var(--main-color);
+    color: var(--main-bg-box-color);
+    margin-left: 90px;
+    flex: 3;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: var(--w2-font);
+}
+
+/*=====  End of Structure Content  ======*/
+
+
+
+/*=======================================================
+=            Strucure Footer                            =
+=======================================================*/
 .footer-row{
     border-top: 1px solid var(--main-graphic-color);
     height: 64px;
@@ -156,3 +400,11 @@ html{
     color: var(--main-graphic-color);
     margin-left: 16px;
 }
+/*=====  End of Strucure Footer  ======*/
+
+
+/*=============================================
+=            Margin and Padding               =
+=============================================*/
+
+/*=====  End of Margin and Padding  ======*/

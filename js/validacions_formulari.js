@@ -39,9 +39,26 @@ function validacioCorreu () {
         }   
 }
 
-
+        
+     
+        //document.getElementById('otro').innerHTML = taula;
 
 window.onload = function() {
+
+    let comanda = localStorage.getItem('comandaMenu');
+    console.log(JSON.parse(comanda));
+    comanda = JSON.parse(comanda);
+    //document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
+    console.log(comanda);
+
+    let taula = '<table border="2"><tr><td>PRODUCTE</td><td>UNITAT/S</td><td>PREU</td></tr>';
+   
+    document.getElementById('llistat').innerHTML = taula;
+    
+    let formulari = '<form action="1.7RafaelGarcia.php" method="POST"><div><label for="nom">Nom:</label><input type="text" id="nom" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="telefon">Telefon:</label><input type="text" id="telefon" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="correu">Correu:</label><input type="text" id="correu" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div></form>';
+    document.getElementById("formulari").innerHTML = formulari;
+       
+
 
         ocultarMissatges ();
     
@@ -67,11 +84,15 @@ window.onload = function() {
         }
         //console.info("TOTAL: " + total);
 
-
+        /*
         let codigoTablaTotal = '<br><table border="2"><tr><th>TOTAL:</th><th>'+total+'</th></tr></table>'; 
-
-        let tablaTotal = document.getElementById("tablaTotal");
+        let tablaTotal = document.getElementById("taulaTotal");
         tablaTotal.innerHTML = codigoTablaTotal;
+        */
+
+
+    
+       
 
         document.getElementById('nom').addEventListener("blur", function(){
             validacioNom ();
@@ -91,7 +112,6 @@ window.onload = function() {
             validacioTelefon ();
             validacioCorreu ();
             let missatges = document.getElementsByClassName("missatgeAlerta");
-            let missatges = document.getElementsByClassName("missatgeAlerta");
             let pasarSeguent = false;         
 
             for (let index = 0; index < missatges.length; index++) {
@@ -109,11 +129,16 @@ window.onload = function() {
                 let caixaText = document.getElementsByTagName("input");
                 
                 console.info("PASAR A LA OTRA PAGINA");
+                location.href = "confirmacio.php";
+
             } else {
                 console.info("NO PASAS A LA OTRA PAGINA");
             }
             
-        })   
+        }) 
+        
+        
+
 };
 
 
