@@ -51,29 +51,45 @@ window.onload = function() {
     
     //console.info(comanda.PrimerPlat);
     //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
-    //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
     //console.info(comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length));
+    //let preu = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
+    //console.info(preu.substring(0, preu.indexOf("€")));
 
+
+    let preuTotal= parseFloat(0.0);
     if (comanda.hasOwnProperty("PrimerPlat")){
         let p1 = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
-        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
         taula += '<tr><td>'+comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+        let preu = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
+        console.info(preu.substring(0, preu.indexOf("€")));
+        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
     }
     if (comanda.hasOwnProperty("SegonPlat")){
         p1 = comanda.SegonPlat.substring(comanda.SegonPlat.indexOf("_")+1, comanda.SegonPlat.length);
-        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
         taula += '<tr><td>'+comanda.SegonPlat.substring(0, comanda.SegonPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+        let preu = comanda.SegonPlat.substring(comanda.SegonPlat.indexOf("_")+1, comanda.SegonPlat.length);
+        console.info(preu.substring(0, preu.indexOf("€")));
+        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
     }
     if (comanda.hasOwnProperty("Postre")){
         p1 = comanda.Postre.substring(comanda.Postre.indexOf("_")+1, comanda.Postre.length);
-        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
         taula += '<tr><td>'+comanda.Postre.substring(0, comanda.Postre.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+        let preu = comanda.Postre.substring(comanda.Postre.indexOf("_")+1, comanda.Postre.length);
+        console.info(preu.substring(0, preu.indexOf("€")));
+        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
     }
-
 
     taula += "</table>";
 
     document.getElementById('llistat').innerHTML = taula;
+
+    console.info(preuTotal);
+    taula = '<table><tr><td>TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
+
+    document.getElementById('total').innerHTML = taula;
     
     let formulari = '<form action="1.7RafaelGarcia.php" method="POST"><div><label for="nom">Nom:   </label><input type="text" id="nom" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="telefon">Telefon:    </label><input type="text" id="telefon" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="correu">Correu:    </label><input type="text" id="correu" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div></form>';
     document.getElementById("formulari").innerHTML = formulari;
@@ -159,7 +175,12 @@ window.onload = function() {
                 var dadesUsuari = new Map();
                 dadesUsuari["nom"]=caixaText[0].value;
                 dadesUsuari["correu"]=caixaText[2].value;
+
+////////////////// CREAR FICHERO 
                 
+
+//////////////////
+
                 localStorage.setItem("dadesUsuari", JSON.stringify(dadesUsuari));
                 location.href = "confirmacio.php";
             } else {

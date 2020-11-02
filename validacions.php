@@ -42,6 +42,10 @@
 <body>
 <!--<h1>COMANDA<h1>-->
 <div id="llistat"></div>
+<br>
+<div id="total"></div>
+
+
 <br><br>
 
 <p>DATOS DE USUARIO</p>
