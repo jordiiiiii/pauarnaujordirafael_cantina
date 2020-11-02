@@ -39,10 +39,6 @@ function validacioCorreu () {
         }   
 }
 
-        
-     
-        //document.getElementById('otro').innerHTML = taula;
-
 window.onload = function() {
 
     let comanda = localStorage.getItem('comandaMenu');
@@ -51,11 +47,35 @@ window.onload = function() {
     //document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
     console.log(comanda);
 
-    let taula = '<table border="2"><tr><td>PRODUCTE</td><td>UNITAT/S</td><td>PREU</td></tr>';
-   
+    let taula = "<table><tr><td>PRODUCTE</td><td>UNITAT/S</td></tr>";
+    
+    //console.info(comanda.PrimerPlat);
+    //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
+    //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
+    //console.info(comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length));
+
+    if (comanda.hasOwnProperty("PrimerPlat")){
+        let p1 = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
+        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        taula += '<tr><td>'+comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+    }
+    if (comanda.hasOwnProperty("SegonPlat")){
+        p1 = comanda.SegonPlat.substring(comanda.SegonPlat.indexOf("_")+1, comanda.SegonPlat.length);
+        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        taula += '<tr><td>'+comanda.SegonPlat.substring(0, comanda.SegonPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+    }
+    if (comanda.hasOwnProperty("Postre")){
+        p1 = comanda.Postre.substring(comanda.Postre.indexOf("_")+1, comanda.Postre.length);
+        console.info(p1.substring(p1.indexOf("_")+1, p1.length));
+        taula += '<tr><td>'+comanda.Postre.substring(0, comanda.Postre.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
+    }
+
+
+    taula += "</table>";
+
     document.getElementById('llistat').innerHTML = taula;
     
-    let formulari = '<form action="1.7RafaelGarcia.php" method="POST"><div><label for="nom">Nom:</label><input type="text" id="nom" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="telefon">Telefon:</label><input type="text" id="telefon" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="correu">Correu:</label><input type="text" id="correu" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div></form>';
+    let formulari = '<form action="1.7RafaelGarcia.php" method="POST"><div><label for="nom">Nom:   </label><input type="text" id="nom" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="telefon">Telefon:    </label><input type="text" id="telefon" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="correu">Correu:    </label><input type="text" id="correu" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div></form>';
     document.getElementById("formulari").innerHTML = formulari;
        
 
@@ -106,11 +126,19 @@ window.onload = function() {
             validacioCorreu ();
         })            
 
+        document.getElementById('enrere').addEventListener("click", function(){
+            location.href = "menu.php";
+        });
+
+
         document.getElementById('seguent').addEventListener("click", function(){
             //console.info("Boto següent.");  
-            validacioNom ();
+        
+            //////////////////////////// ACTIVAR MAS TARDER //////////////////////////////////////
+            /*    validacioNom ();
             validacioTelefon ();
-            validacioCorreu ();
+            validacioCorreu ();*/
+            ////////////////////////////////////////////////////////////////////////////////////
             let missatges = document.getElementsByClassName("missatgeAlerta");
             let pasarSeguent = false;         
 
@@ -124,13 +152,16 @@ window.onload = function() {
                     pasarSeguent = true;
                 }
             }
-            console.info(pasarSeguent);
+            //console.info(pasarSeguent);
             if (pasarSeguent) {
-                let caixaText = document.getElementsByTagName("input");
-                
                 console.info("PASAR A LA OTRA PAGINA");
+                let caixaText = document.getElementsByTagName("input");
+                var dadesUsuari = new Map();
+                dadesUsuari["nom"]=caixaText[0].value;
+                dadesUsuari["correu"]=caixaText[2].value;
+                
+                localStorage.setItem("dadesUsuari", JSON.stringify(dadesUsuari));
                 location.href = "confirmacio.php";
-
             } else {
                 console.info("NO PASAS A LA OTRA PAGINA");
             }
