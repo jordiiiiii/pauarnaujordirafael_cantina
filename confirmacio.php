@@ -29,9 +29,15 @@
                     <h2>CONFIRMACIO</h2>
                 </div>
                 <div class="content-box">
-                    <h1>COMANDA COMPLETADA AMB EXIT</h1>
-                    <p>Gracies ${nom} per la teva compra</p>
-                    <p>Passa-ho a buscar a la cantina</p>
+                    <?php
+                        if (isset($_COOKIE['comprado'])) {
+                            include('error.php')
+                        }
+                        else {
+                            include('pedido_ok.php')
+                            setcookie('comprado', true,  strtotime("tomorrow");
+                        }
+                    ?>
                 </div>
                 <a href="index.php">Finalitzar compra</a>
                 <!-- ========== End Codi Pau ============ -->
