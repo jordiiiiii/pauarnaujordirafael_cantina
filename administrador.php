@@ -20,7 +20,7 @@
         <!-- ============================================================== -->
         <div class="main-row">
             <div class="content">
-                <!-- ========== Codi Pau Start ========== -->
+                <!-- ========== Codi Admin Start ========== -->
                 <!-- ========== Row Present ========== -->
                 <div class="content-row-present">
                     <h2>BENVINGUTS</h2>
@@ -29,18 +29,14 @@
                     <h2>CONFIRMACIO</h2>
                 </div>
                 <div class="content-box">
-                    <?php
-                        if (isset($_COOKIE['comprado'])) {
-                            include('error.php');
-                        }
-                        else {
-                            include('pedido_ok.php');
-                            setcookie('comprado', true,  strtotime("tomorrow"));
-                        }
-                    ?>
+                    <h3>PAGINA ADMINISTRADOR SENYOR JORDI GORBE MESTRE DE LES NINFES</h3>
+                    <div class="content-row-flux-nav">
+                        <div class="back-index-butt">
+                            <button id="back-to-index" >Previous Step</button>
+                        </div>
+                    </div>
                 </div>
-                <a href="index.php">Finalitzar compra</a>
-                <!-- ========== End Codi Pau ============ -->
+                <!-- ========== End Codi Arnau ============ -->
             </div>
         </div>
         <!-- ============================================================== -->
@@ -51,7 +47,9 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-
+    <script type="text/javascript">
+        document.getElementById("back-to-index").onclick = function () { location.href = "index.php"; };
+    </script>
     <!-- third party js ends -->
 </body>
 </html>
