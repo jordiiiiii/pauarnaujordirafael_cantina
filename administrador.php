@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="description" content="Website Cantina Institut Pedralbes">
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
-    <meta name="author" content="Pau Callejas Tovar">
+    <meta name="author" content="Arnau Fernandez Jerez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Pedralbes Confirmation</title>
+    <title>Admin Page</title>
     <?php include('includes.inc');?>
 </head>
 <body>
@@ -19,21 +19,23 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
         <div class="main-row">
-            <div class="content">
-                <!-- ========== Codi Admin Start ========== -->
-                <!-- ========== Row Present ========== -->
-                <div class="content-row-present">
+            <div class="content-col">
+                <!-- ========== Row Head ========== -->
+                <div class="content-head">
                     <h2>BENVINGUTS</h2>
                     <h2>LA TEVA COMANDA</h2>
                     <h2>DETALLS ENCARREC</h2>
                     <h2>CONFIRMACIO</h2>
                 </div>
-                <div class="content-box">
-                    <h3>PAGINA ADMINISTRADOR SENYOR JORDI GORBE MESTRE DE LES NINFES</h3>
-                    <div class="content-row-flux-nav">
-                        <div class="back-index-butt">
-                            <button id="back-to-index" >Previous Step</button>
-                        </div>
+                <!-- ========== Codi Arnau Start ========== -->
+                <!-- ========== Row Main ========== -->
+                <div class="content-main">
+                    <h3>PAGINA ADMINISTRADOR SENYOR JORDI GORBE NEIRA MESTRE DE LES NINFES</h3>
+                </div>
+                <!-- ========== Row Flux ========== -->
+                <div class="content-flux">
+                    <div class="back-index-butt btn">
+                        <button id="back-to-index"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
                     </div>
                 </div>
                 <!-- ========== End Codi Arnau ============ -->
@@ -47,9 +49,7 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script type="text/javascript">
-        document.getElementById("back-to-index").onclick = function () { location.href = "index.php"; };
-    </script>
+    <script type="text/javascript">document.getElementById("back-to-index").onclick = function () { location.href = "index.php"; };</script>
     <!-- third party js ends -->
 </body>
 </html>

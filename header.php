@@ -10,7 +10,7 @@
                 </div>
             </header>
             <div class="info-col">
-                <div>
+                <nav>
                     <a href="https://ca-es.facebook.com/" target="_blank">
                         <img src="img/social_facebook_fb_35.png" alt="Facebook" srcset="">
                     </a>
@@ -20,7 +20,7 @@
                     <a href="https://twitter.com/?lang=ca" target="_blank">
                         <img src="img/social_Twitter_38.png" alt="Twitter" srcset="">
                     </a>
-                </div>
+                </nav>
             </div>
         </div>
         <!-- ========== End Header ========== -->

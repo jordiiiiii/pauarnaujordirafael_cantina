@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Website</title>
     <?php include('includes.inc');?>
+    <link rel="stylesheet" href="css/arnauIndex.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -19,60 +20,48 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
         <div class="main-row">
-            <div class="content">
-                <!-- ========== Codi Arnau Start ========== -->
-                <!-- ========== Row Present ========== -->
-                <div class="content-row-present">
+            <div class="content-col">
+                <!-- ========== Row Head ========== -->
+                <div class="content-head">
                     <h2>BENVINGUTS</h2>
                     <h2>LA TEVA COMANDA</h2>
                     <h2>DETALLS ENCARREC</h2>
                     <h2>CONFIRMACIO</h2>
                 </div>
-
-                <div class="content-box">
-                    
+                <!-- ========== Codi Arnau Start ========== -->
+                <!-- ========== Row Main ========== -->
+                <div class="content-main">
                     <!-- SLIDESHOW D'IMATGES-->
                     <div class ="todo">
                         <div class="slideshow-container">
                             <div class="mySlides fade">
-                                    <div class="numbertext"></div>
-                                    <img src="img/img1.jpg" style="width:80%">
-                                </div>
-            
-                                <div class="mySlides fade">
-                                    <div class="numbertext"></div>
-                                    <img src="img/img2.jpg" style="width:80%">
-                                </div>
-            
-                                <div class="mySlides fade">
-                                    <div class="numbertext"></div>
-                                    <img src="img/img3.jpg" style="width:80%">              
-                                </div>
-                                    <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                    <a class="next" onclick="plusSlides(1)">&#10095;</a>  --> 
-                                    <br>  
-                                <div style="text-align:center">
-                                    <span class="dot" onclick="currentSlide(1)"></span> 
-                                    <span class="dot" onclick="currentSlide(2)"></span> 
-                                    <span class="dot" onclick="currentSlide(3)"></span> 
-                                </div>
-            
+                                <div class="numbertext"></div>
+                                <img src="img/indexImg1.jpg">
                             </div>
-        
-                            <!--Botons fer comanda / admin -->
-        
-                            <div class="botons">     
-                                <p>
-                                    <button id ="fer_comanda" class="boto">FER COMANDA</button>
-                                    <button id ="admnistrador" class="boto">ADMINISTRADOR</button>
-                                </p>
-                            
+                            <div class="mySlides fade">
+                                <div class="numbertext"></div>
+                                <img src="img/indexImg2.jpg">
+                            </div>
+                            <div class="mySlides fade">
+                                <div class="numbertext"></div>
+                                <img src="img/indexImg2.jpg">
+                            </div>
+                                <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>  -->
+                                <!-- <br>   -->
+                            <div style="text-align:center">
+                                <span class="dot" onclick="currentSlide(1)"></span>
+                                <span class="dot" onclick="currentSlide(2)"></span>
+                                <span class="dot" onclick="currentSlide(3)"></span>
                             </div>
                         </div>
-                    
-                
+                    </div>
                 </div>
-
+                <!-- ========== Row Flux ========== -->
+                <div class="content-flux">
+                    <button id="send-admin" class="send-admin-butt">ADMIN</button>
+                    <button id="send-menu" class="send-menu-butt">MENUS</button>
+                </div>
                 <!-- ========== End Codi Arnau ============ -->
             </div>
         </div>
@@ -83,23 +72,9 @@
         <?php include('footer.php');?>
         <!-- ========== End Footer ========== -->
     </div>
-
     <!-- third party js -->
+    <script src="js/changeWelcomePageTitle.js"></script>
     <script src="js/index.js"></script>
-    <script>
-        /*JavaScript botons*/
-        document.getElementById("fer_comanda").onclick = function () { 
-            location.href = "menu.php";
-        };
-        
-        document.getElementById("admnistrador").onclick = function () { 
-            location.href = "administrador.php";
-        };
-
-    </script>
-
     <!-- third party js ends -->
-
 </body>
 </html>
-<!-- <img src="hospital.png" id="hospitals" onclick="damarkers();"> -->
