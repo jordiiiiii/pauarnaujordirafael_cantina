@@ -1,5 +1,3 @@
-
-  
 /*=======================================================
 =            Section Reset                              =
 =======================================================*/
@@ -29,10 +27,20 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 }
 
-button{
+button {
     border: none;
     font-family : inherit;
     font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+:focus {
+	outline: 0;
+}
+
+ol, ul {
+	list-style: none;
 }
 
 /* html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,label,legend,p,blockquote,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}body{line-height:1;color:black;background:white;}:focus{outline:0;}table{border-collapse:collapse;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}abbr,acronym{border:0;} */
@@ -53,6 +61,12 @@ button{
     --main-txt-color: #000F14;
     /* 04_ColorBase */
     --main-color: #009FD6;
+    /* 04_ColorBase_Transparent 75% */
+    --main-color-transparent: #009FD6BF;
+    /* 04_ColorBase_Brighter_Transparent 10% */
+    --main-color-brighter: #05C1FF1A;
+    /* 04_ColorBase_Darker */
+    --main-color-darker: #005A78;
     /* 05_ColorGraphics */
     --main-graphic-color: #BDBDBD;
 
@@ -84,7 +98,7 @@ button{
     --margin-hort: 64px;
 }
 
-html{
+html {
     background-color: var(--main-bg-color);
     color: var(--main-txt-color);
     font-family: 'Roboto', sans-serif;
@@ -93,24 +107,42 @@ html{
     font-weight: var(--w3-font);
 }
 
-h1{
+h1 {
     font-size: var(--h1-size);
 }
-h2{
+h2 {
     font-size: var(--h2-size);
 }
-h3{
+h3 {
     font-size: var(--h3-size);
 }
-h4{
+h4 {
     font-size: var(--h4-size);
 }
 
-.row-layout{
+.row-layout {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
+
+/* Ligher background on mouse-over */
+button:hover {
+    background-color: var(--main-color-transparent);
+}
+
+/* Brighter background on mouse-over */
+.box-plat:hover {
+    background-color: var(--main-color-brighter);
+}
+
+/* Darker color on mouse-over */
+.btn:hover #back-to-index,
+.btn:hover #back-to-menu,
+.btn:hover #back-to-form {
+    color: var(--main-color-darker);
+}
+
 /*=====  End of Structure Desktop Page  ======*/
 
 
@@ -118,31 +150,31 @@ h4{
 /*=======================================================
 =            Structure Header                           =
 =======================================================*/
-.header-row{
+.header-row {
     background-color: var(--main-bg-box-color);
     height: 112px;
     display: flex;
     padding: 16px 16px;
 }
 
-.header-row h2{
+.header-row h2 {
     font-weight: var(--w2-font);
     color: var(--main-graphic-color);
 }
 
 /* =Column Left
 ------------------------------------------------- */
-.logo-col{
+.logo-col {
     flex: 1;
 }
 
-.logo-col img{
+.logo-col img {
     height: 100%;
 }
 
 /* =Column Center
 ------------------------------------------------- */
-.title-col{
+.title-col {
     flex: 2;
     text-align: center;
     padding-top: 16px;
@@ -153,14 +185,14 @@ h4{
 
 /* =Column Right
 ------------------------------------------------- */
-.info-col{
+.info-col {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
 }
 
-.info-col a{
+.info-col a {
     text-decoration: none;
     margin-left: 8px;
 }
@@ -171,107 +203,96 @@ h4{
 /*=======================================================
 =            Structure Content                          =
 =======================================================*/
-.main-row{
+
+
+/* LEVEL 1 */
+.main-row {
     align-items: center;
     display: flex;
     justify-content: center;
-    flex-direction: row;
     flex: 1;
 }
 
-.content{
+/* LEVEL 2 */
+.content-col {
     background-color: var(--main-bg-box-color);
     min-width: 960px;
     max-width: 1120px;
     box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+    margin-top: var(--margin-hort)/2;
+    margin-bottom: var(--margin-hort)/2;
 }
 
-.content-box{
-    padding: var(--margin-hort) var(--margin-vert);
-}
-
-
-/* =ROW PRESENT
------------------------------------------------------- */
-/* =1st row
---------------------------------------- */
-.content-row-present{
+/* LEVEL 3 */
+.content-head {
     display: flex;
-    flex-direction: row;
     align-content: stretch;
 }
-/* =All columns
+
+/* LEVEL 3 */
+.content-main {
+    display: flex;
+    margin: var(--margin-hort) var(--margin-vert);
+}
+
+
+/* LEVEL 3 */
+.content-flux {
+    display: flex;
+    align-items: flex-end;
+    padding: 0px var(--margin-vert) var(--margin-hort) var(--margin-vert);
+}
+
+/* LEVEL 4 */
+/* =ROW CONTENT HEAD
+------------------------------------------------------ */
+/* =All Rows
 ---------------------------------- */
-.content-row-present > h2{
+.content-head > h2 {
     flex: 1;
     text-align: center;
     padding: 22px 0px;
     border-bottom: 1px solid var(--main-graphic-color);
 }
 
-.content-row-present h2{
+.content-head h2 {
     font-weight: var(--w2-font);
     color: var(--main-graphic-color);
 }
 
-.content-row-present > h2:nth-child(2){
+/* .content-head > h2:nth-child(2){
     color: var(--main-color);
     font-weight: var(--w4-font);
     border-bottom: 2px solid var(--main-color);
-}
+} */
 
-/* =ROW TITLE
+/* LEVEL 4 */
+/* =ROW CONTENT MAIN
 ------------------------------------------------------ */
-.content-row-title{
-    display: flex;
-    flex-direction: row;
-}
-
-.content-row-title h3{
-    font-weight: var(--w4-font);
-}
-
-.title-left{
-    padding-bottom: 36px;
-    flex: 4;
-}
-
-.title-right{
-    padding-bottom: 36px;
-    margin-left: var(--margin-vert);
-    flex: 3;
-}
-
-/* =ROW MENU
+/* =COLUMN LEFT
 ------------------------------------------------------ */
-.content-row-menu{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-}
-
-/* =LEFT COLUMN
-------------------------------------------------- */
-.list-row-menu{
+.content-left-side {
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--margin-hort);
     flex: 4;
 }
 
-.list-col-menu{
+/* LEVEL 5 */
+.title-left {
+    padding-bottom: 36px;
+}
+.title-left h3 {
+    font-weight: var(--w4-font);
+}
+.col-menu {
     display: flex;
     flex: 1;
 }
-.col-menu{
-    display: flex;
-    align-items: stretch;
-    flex-direction: row;
-    flex: 1;
-}
-.box-plat{
+
+/* LEVEL 6 */
+.box-plat {
     border: 1px solid var(--main-graphic-color);
     max-width: 96px;
     background-color: transparent;
@@ -289,29 +310,42 @@ h4{
     min-height: 96px;
 }
 
-.box-plat > p:nth-child(2){
+.box-plat > p:nth-child(2) {
     font-size: 13px;
     font-weight: var(--w3-font);
 }
 
 
-/* =RIGHT COLUMN
-------------------------------------------------- */
-.list-row-menu-price{
+/* LEVEL 4 */
+/* =COLUMN RIGHT
+------------------------------------------------------ */
+.content-right-side {
     display: flex;
     flex-direction: column;
-    background-color: yellow;
-    margin-left: var(--margin-vert);
-    margin-bottom: var(--margin-hort);
     flex: 3;
+    margin-left: var(--margin-vert);
 }
-.list-row-menu-price h4{
+
+/* LEVEL 5 */
+.title-right {
+    padding-bottom: 36px;
+}
+.title-right h3 {
+    font-weight: var(--w4-font);
+}
+.col-price {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* LEVEL 6 */
+.col-price h4 {
     color: var(--main-color);
     font-weight: var(--w2-font);
     padding-bottom: 4px;
 }
-
-.list-row-menu-price > div{
+.col-price {
     flex: 1;
     border-bottom: 1px solid var(--main-color);
     display: flex;
@@ -319,14 +353,12 @@ h4{
     justify-content: flex-end;
 }
 
-/* =1st row
---------------------------------------- */
-.row-menu-price{
+/* LEVEL 7 */
+.row-price {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 16px, 0px, 32px, 0px;
     font-size: 18px;
     margin-bottom: 8px;
 }
@@ -337,29 +369,24 @@ h4{
     max-width: 192px;
 }
 
-/* =ROW Flux
+/* LEVEL 4 */
+/* =ROW CONTENT FLUX
 ------------------------------------------------------ */
-.content-row-flux-nav{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    height: 48px;
-}
-.back-index-butt{
+.back-index-butt {
     height: 48px;
     display: flex;
     flex: 4;
     text-align: start;
 }
-#back-to-index{
+#back-to-index {
     background-color: transparent;
     color: var(--main-color);
     align-items: center;
 }
-.send-order-butt{
+.send-order-butt {
     background-color: var(--main-color);
     color: var(--main-bg-box-color);
-    margin-left: 90px;
+    margin-left: var(--margin-vert);
     flex: 3;
     height: 48px;
     border-radius: 4px;
@@ -376,28 +403,28 @@ h4{
 /*=======================================================
 =            Strucure Footer                            =
 =======================================================*/
-.footer-row{
+.footer-row {
     border-top: 1px solid var(--main-graphic-color);
     height: 64px;
     display: flex;
     padding: 16px 32px;
 }
 
-.footer-col-left{
+.footer-col-left {
     flex: 1;
     display: flex;
     align-items: center;
     color: var(--main-graphic-color);
 }
 
-.footer-col-right{
+.footer-col-right {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.footer-text a{
+.footer-text a {
     text-decoration: none;
     color: var(--main-graphic-color);
     margin-left: 16px;
@@ -408,5 +435,265 @@ h4{
 /*=============================================
 =            Margin and Padding               =
 =============================================*/
-
 /*=====  End of Margin and Padding  ======*/
+
+
+/*=============================================
+=            Flux Buttons Index               =
+=============================================*/
+.send-admin-butt {
+    background-color: var(--main-color);
+    color: var(--main-bg-box-color);
+    margin-right: var(--margin-vert);
+    flex: 1;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: var(--w2-font);
+}
+.send-menu-butt {
+    background-color: var(--main-color);
+    color: var(--main-bg-box-color);
+    margin-left: var(--margin-vert);
+    flex: 1;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: var(--w2-font);
+}
+/*=====  End of Flux Buttons Index  ======*/
+/*=============================================
+=            Flux Buttons Formulari           =
+=============================================*/
+.back-menu-butt {
+    height: 48px;
+    display: flex;
+    flex: 4;
+    text-align: start;
+}
+#back-to-menu {
+    background-color: transparent;
+    color: var(--main-color);
+    align-items: center;
+}
+.send-confirmation-butt {
+    background-color: var(--main-color);
+    color: var(--main-bg-box-color);
+    margin-left: var(--margin-vert);
+    flex: 3;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: var(--w2-font);
+}
+/*=====  End of Flux Buttons Formulari  ======*/
+/*=============================================
+=            Flux Buttons Confirmacio         =
+=============================================*/
+.back-form-butt {
+    height: 48px;
+    display: flex;
+    flex: 4;
+    text-align: start;
+}
+#back-to-form {
+    background-color: transparent;
+    color: var(--main-color);
+    align-items: center;
+}
+.send-end-butt {
+    background-color: var(--main-color);
+    color: var(--main-bg-box-color);
+    margin-left: var(--margin-vert);
+    flex: 3;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    font-weight: var(--w2-font);
+}
+/*=====  End of Flux Buttons Confirmacio  ======*/
+
+/* exemple 1 */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border: 1px solid black;
+}
+
+/* .wrapper * {
+    margin: 20px;
+} */
+
+.page-header {
+    flex: 1;
+    /* flex-grow: 2; */
+    background-color: olive;
+    border: 1px solid blue;
+}
+
+.page-footer {
+    flex: 1;
+    /* flex-grow: 1; */
+    background-color: orange;
+    border: 1px solid green;
+}
+
+.page-main {
+    flex: 1;
+    /* flex-grow: 3; */
+    background-color: hotpink;
+    border: 1px solid red;
+    display: flex;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.page-main figure {
+    /* flex-grow: 1; */
+    border: 1px solid gray;
+    /* width: calc(33.3% - 100px); */
+    float: left;
+    position: relative;
+    margin-right: 45px;
+    margin-left: 45px;
+    margin-bottom: 90px;
+}
+
+.a1 {
+    background-color: #E7DAD3;
+}
+
+.a2 {
+    background-color: #E9F3DB;
+}
+
+.a3 {
+    background-color: #D7D9DB;
+}
+
+/* #container {
+    width: 48px;
+    height: 48px;
+} */
+
+/* exemple 2 */
+#container img {
+    width: 100%;
+    transition: transform .4s;
+}
+
+figure:hover img {
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05); 
+}
+
+figure {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    overflow: hidden;
+}
+
+figure:hover img {
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05); 
+}
+
+/* figure.card:hover.has-button .move {
+    transform: translateY(0%);
+    transition: transform 0.3s cubic-bezier(0.28, 0, 0.18, 1) 0.5s;
+} */
+
+figure:hover .move {
+    transform: translateY(0%);
+    transition: transform 0.3s cubic-bezier(0.28, 0, 0.18, 1) 0.5s;
+}
+
+.move {
+    z-index: 10000;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 60px;
+    transition: transform 0.3s cubic-bezier(0.28, 0, 0.18, 1);
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.28, 0, 0.18, 1);
+    transition-delay: 0s;
+    transform: translateY(100%);
+    text-align: center;
+}
+
+.button{
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    color: #fff !important;
+    background: black;
+    opacity: 1;
+    font-size: 0.8rem;
+    position: relative;
+    padding: 15px !important;
+    border: none;
+    font-weight: 500;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    line-height: 1;
+    border-radius: 0;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-bottom: 0;
+    transition: black 0.25s cubic-bezier(0.28, 0, 0.18, 1),color 0.25s cubic-bezier(0.28, 0, 0.18, 1);
+    transition-property: black, color;
+    transition-duration: 0.25s, 0.25s;
+    transition-timing-function: cubic-bezier(0.28, 0, 0.18, 1), cubic-bezier(0.28, 0, 0.18, 1);
+    transition-delay: 0s, 0s;
+}
+
+
+/* exemple 3 */
+#mobileMenuWrapper{
+    margin-top:-100px; 
+    transition: margin-top 0.5s ease;
+}
+#mobileMenuWrapper.show{
+    margin-top:0px;
+}
+.germa1 {
+    height: 100px;
+    width: 100%
+}
+.germa2 {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    left: 50px;
+}
+.child1 {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+.child2 {
+    height: 50px;
+    width: 125px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
