@@ -6,7 +6,7 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
     <meta name="author" content="Rafael Garcia Perez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Pedralbes Validacio</title>
+    <title>Cantina Pedralbes Confirmation</title>
     <?php include('includes.inc');?>
 </head>
 <body>
@@ -30,8 +30,9 @@
                 <!-- ========== Codi Rafael Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <!-- <div id="comanda"></div> -->
-                    <?php include('validacions.php');?>
+                    <div id="comanda">
+
+                    </div>
                 </div>
                 <!-- ========== Row Flux ========== -->             
                 <div class="content-flux">
@@ -40,7 +41,7 @@
                     </div>
                     <button id="send-confirmation" class="send-confirmation-butt">CONFIRMACIO</button>
                 </div>
-                <!-- ========== End Codi Rafael ============ -->
+                <!-- ========== End Rafael Jordi ============ -->
             </div>
         </div>
         <!-- ============================================================== -->
@@ -52,9 +53,7 @@
     </div>
     <!-- third party js -->
     <script src="js/changeDetailsPageTitle.js"></script>
-
-
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         let comanda = localStorage.getItem('comandaMenu');
         console.log(JSON.parse(comanda));
         comanda = JSON.parse(comanda);
@@ -62,7 +61,7 @@
 
         document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
         document.getElementById("send-confirmation").onclick = function () { location.href = "confirmacio.php"; };
-    </script> -->
+    </script>
     <!-- third party js ends -->
 </body>
 </html>

@@ -19,16 +19,17 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
         <div class="main-row">
-            <div class="content">
-                <!-- ========== Codi Pau Start ========== -->
-                <!-- ========== Row Present ========== -->
-                <div class="content-row-present">
+            <div class="content-col">
+                <!-- ========== Row Head ========== -->
+                <div class="content-head">
                     <h2>BENVINGUTS</h2>
                     <h2>LA TEVA COMANDA</h2>
                     <h2>DETALLS ENCARREC</h2>
                     <h2>CONFIRMACIO</h2>
                 </div>
-                <div class="content-box">
+                <!-- ========== Codi Pau Start ========== -->
+                <!-- ========== Row Main ========== -->
+                <div class="content-main">
                     <?php
                         if (isset($_COOKIE['comprado'])) {
                             include('error.php');
@@ -39,7 +40,13 @@
                         }
                     ?>
                 </div>
-                <a href="index.php">Finalitzar compra</a>
+                <!-- ========== Row Flux ========== -->             
+                <div class="content-flux">
+                    <div class="back-form-butt btn">
+                        <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
+                    </div>
+                    <button id="send-end" class="send-end-butt">The End</button>
+                </div>
                 <!-- ========== End Codi Pau ============ -->
             </div>
         </div>
@@ -51,7 +58,11 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-
+    <script src="js/changeConfirmationPageTitle.js"></script>
+    <script type="text/javascript">
+        document.getElementById("back-to-form").onclick = function () { location.href = "formulari.php"; };
+        document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
+    </script>
     <!-- third party js ends -->
 </body>
 </html>
