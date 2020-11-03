@@ -4,7 +4,7 @@
 /*=============================================
 =            Adimn Button                  =
 =============================================*/
-document.getElementById("send-admin").onclick = function () { location.href = "administrador.php"; };
+document.getElementById("send-admin").onclick = function () { location.href = "./admin/administrador.php"; };
 /*=====  End of Adimn Button  ======*/
 
 /*=============================================

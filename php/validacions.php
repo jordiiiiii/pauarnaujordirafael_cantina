@@ -57,7 +57,7 @@
 <button type="button" id="seguent">Següent</button>
 
 </div>
-<script src="js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
+<script src="../js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
 </body>
 </html>
 

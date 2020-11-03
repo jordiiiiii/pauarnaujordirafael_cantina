@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="description" content="Website Cantina Institut Pedralbes">
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
-    <meta name="author" content="Rafael Garcia Perez">
+    <meta name="author" content="Arnau Fernandez Jerez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Pedralbes Validacio</title>
-    <?php include('includes.inc');?>
+    <title>Admin Page</title>
+    <?php include('../includes.inc');?>
 </head>
 <body>
     <!-- Begin Page -->
     <div class="row-layout">
         <!-- ========== Header Start ========== -->
-        <?php include('header.php');?>
+        <?php include('../header.php');?>
         <!-- ========== End Header ========== -->
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -27,42 +27,29 @@
                     <h2>DETALLS ENCARREC</h2>
                     <h2>CONFIRMACIO</h2>
                 </div>
-                <!-- ========== Codi Rafael Start ========== -->
+                <!-- ========== Codi Arnau Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <!-- <div id="comanda"></div> -->
-                    <?php include('validacions.php');?>
+                    <h3>PAGINA ADMINISTRADOR SENYOR JORDI GORBE NEIRA MESTRE DE LES NINFES</h3>
                 </div>
-                <!-- ========== Row Flux ========== -->             
+                <!-- ========== Row Flux ========== -->
                 <div class="content-flux">
-                    <div class="back-menu-butt btn">
-                        <button id="back-to-menu"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
+                    <div class="back-index-butt btn">
+                        <button id="back-to-index"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
                     </div>
-                    <button id="send-confirmation" class="send-confirmation-butt">CONFIRMACIO</button>
                 </div>
-                <!-- ========== End Codi Rafael ============ -->
+                <!-- ========== End Codi Arnau ============ -->
             </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Page Content -->
         <!-- ============================================================== -->
         <!-- ========== Footer Start ========== -->
-        <?php include('footer.php');?>
+        <?php include('../footer.php');?>
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="js/changeDetailsPageTitle.js"></script>
-
-
-    <!-- <script type="text/javascript">
-        let comanda = localStorage.getItem('comandaMenu');
-        console.log(JSON.parse(comanda));
-        comanda = JSON.parse(comanda);
-        document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
-
-        document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
-        document.getElementById("send-confirmation").onclick = function () { location.href = "confirmacio.php"; };
-    </script> -->
+    <script type="text/javascript">document.getElementById("back-to-index").onclick = function () { location.href = "index.php"; };</script>
     <!-- third party js ends -->
 </body>
 </html>

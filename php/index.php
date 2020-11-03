@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Website</title>
     <?php include('includes.inc');?>
-    <link rel="stylesheet" href="css/arnauIndex.css">
+    <link rel="stylesheet" href="../css/arnauIndex.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -36,15 +36,15 @@
                         <div class="slideshow-container">
                             <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <img src="img/indexImg1.jpg">
+                                <img src="../img/indexImg1.jpg">
                             </div>
                             <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <img src="img/indexImg2.jpg">
+                                <img src="../img/indexImg2.jpg">
                             </div>
                             <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <img src="img/indexImg2.jpg">
+                                <img src="../img/indexImg2.jpg">
                             </div>
                                 <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>  -->
@@ -73,8 +73,8 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="js/changeWelcomePageTitle.js"></script>
-    <script src="js/index.js"></script>
+    <script src="../js/changeWelcomePageTitle.js"></script>
+    <script src="../js/index.js"></script>
     <!-- third party js ends -->
 </body>
 </html>

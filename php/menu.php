@@ -137,8 +137,8 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="js/menu.js"></script>
-    <script src="js/changeMenuPageTitle.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/changeMenuPageTitle.js"></script>
     <!-- third party js ends -->
 </body>
 </html>

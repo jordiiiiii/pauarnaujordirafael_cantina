@@ -58,7 +58,7 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="js/changeConfirmationPageTitle.js"></script>
+    <script src="../js/changeConfirmationPageTitle.js"></script>
     <script type="text/javascript">
         document.getElementById("back-to-form").onclick = function () { location.href = "formulari.php"; };
         document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
