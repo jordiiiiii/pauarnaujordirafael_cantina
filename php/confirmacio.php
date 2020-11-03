@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Confirmation</title>
     <?php include('includes.inc');?>
+    <link rel="stylesheet" href="css/rafaelFormulari.css">
 </head>
 <body>
     <!-- Begin Page -->
