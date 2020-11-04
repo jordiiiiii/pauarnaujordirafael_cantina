@@ -25,6 +25,7 @@
     font-size: 12px;
     font-weight: var(--w2-font);
     min-height: 96px;
+    cursor: pointer;
 }
 
 /* LEVEL 7 */
@@ -32,6 +33,9 @@
     font-size: 13px;
     font-weight: var(--w3-font);
 }
+/* .box-plat > p:nth-child(1) {
+    z-index: -1;
+} */
 
 
 /* LEVEL 4 */

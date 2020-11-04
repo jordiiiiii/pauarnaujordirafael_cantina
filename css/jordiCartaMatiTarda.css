@@ -89,6 +89,7 @@
     color: var(--main-color);
     font-weight: var(--w2-font);
     padding-bottom: 4px;
+    padding-top: 4px;
 }
 .col-price {
     flex: 1;

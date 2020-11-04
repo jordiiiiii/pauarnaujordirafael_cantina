@@ -10,36 +10,91 @@ document.getElementById("back-to-index").onclick = function () { location.href =
 /*=============================================
 =            Next Button                      =
 =============================================*/
-document.getElementById("send-order").onclick = function () { 
-            
-    let comanda = new Map();
+if (checkLunchTime()) {
+    document.getElementById("send-order").onclick = function () { 
+                
+        let comanda = new Map();
+    
+        let nomPlat1 = document.getElementById('primer-plat-name').innerHTML;
+        let nomPlat2 = document.getElementById('segon-plat-name').innerHTML;
+        let nomPostre = document.getElementById('postre-name').innerHTML;
 
-    let nomPlat1 = document.getElementById('primer-plat-name').innerHTML;
-    let nomPlat2 = document.getElementById('segon-plat-name').innerHTML;
-    let nomPostre = document.getElementById('postre-name').innerHTML;
 
-    if (nomPlat1 != '') {
-        comanda['PrimerPlat'] = nomPlat1 + '_' + document.getElementById('primer-plat-price').innerHTML + '_1';
-    }
-    if (nomPlat2 != '') {
-        comanda['SegonPlat'] = nomPlat2 + '_' + document.getElementById('segon-plat-price').innerHTML + '_1';
-    }
-    if (nomPostre != '') {
-        comanda['Postre'] = nomPostre + '_' + document.getElementById('postre-price').innerHTML + '_1';
-    }
+        if (nomPlat1 != '') {
+            comanda[nomPlat1] = 1;
+        }
+        if (nomPlat2 != '') {
+            comanda[nomPlat2] = 1;
+        }
+        if (nomPostre != '') {
+            comanda[nomPostre] = 1;
+        }
+    
+        console.log(comanda);
+        console.log(JSON.stringify(comanda));
+    
+        if (nomPlat1 == '' && nomPlat2 == '' && nomPostre == '') {  
+            alert('Selecciona algun producte, carallot!');
+        }
+        else if (nomPlat1 == '' &&  nomPlat2 == '' || nomPlat1 == '' &&  nomPostre == '' || nomPlat2 == '' &&  nomPostre == '') {
+            alert(`Ok Boomer, però agafa un producte més. De bon rollo t'ho dic`);
+        }
+        else {
+            localStorage.setItem('comandaMenu', JSON.stringify(comanda));
+            location.href = "formulari.php"; ////////////////////////////////////////////// Comenta si no vols passar de pàgina
+        }
+    
+    };
+} else {
+    document.getElementById("send-order").onclick = function () { 
+                
+        let comanda = new Map();
+    
+        let stored = document.getElementById('zona1').getElementsByTagName('div');
 
-    console.log(comanda);
-    console.log(JSON.stringify(comanda));
+        if (stored) {
+            let preus;
+            for (let i = 0; i < stored.length; i++) {
+                const element = stored[i];
+                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+            }
+        }
 
-    if (nomPlat1 != '' || nomPlat2 != '' || nomPostre != '') {  
-        localStorage.setItem('comandaMenu', JSON.stringify(comanda));
-        location.href = "formulari.php";
-    }
-    else {
-        alert('Selecciona algun producte, carallot!');
-    }
+        stored = document.getElementById('zona2').getElementsByTagName('div');
 
-};
+        if (stored) {
+            let preus;
+            for (let i = 0; i < stored.length; i++) {
+                const element = stored[i];
+                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+            }
+        }
+
+        stored = document.getElementById('zona3').getElementsByTagName('div');
+
+        if (stored) {
+            let preus;
+            for (let i = 0; i < stored.length; i++) {
+                const element = stored[i];
+                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+            }
+        }
+
+        // Check if string is empty
+        let map = JSON.stringify(comanda);
+        
+        if (map[1] === '}') {
+            console.log(JSON.stringify(comanda));
+            alert('Selecciona algun producte, carallot!');
+        }
+        else {
+            console.log(JSON.stringify(comanda));
+            localStorage.setItem('comandaCartaMatiTarda', JSON.stringify(comanda));
+            // location.href = "formulari.php";
+        }
+    
+    };
+}
 /*=====  End of Next Button  ==========*/
 /*=====  End of Section Onclick Button  ============*/
 
@@ -48,7 +103,49 @@ document.getElementById("send-order").onclick = function () {
 =            Section Functions                       =
 ====================================================*/
 /*=============================================
-=            Calculate Total Price            =
+=            Check Hour Now                   =
+=============================================*/
+function checkLunchTime() {
+    let now = new Date();
+
+    let hour = now.getHours();
+    let minutes = now.getMinutes();
+
+    console.log(hour + ':' + minutes);
+
+    // Check hour between 11:30 and 21:30
+    if ((hour > 10 && hour < 22)) {
+        if ((hour > 11 && hour < 21)) {
+            return true;
+        }
+        else if (hour == 11) {
+            if (minutes > 29) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else if (hour == 21) {
+            if (minutes < 30) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
+/*=====  End of Check Hour Now  ======*/
+
+/*=============================================
+=            Calculate Total Price Menu       =
 =============================================*/
 function totalPrice() {
 
@@ -96,7 +193,64 @@ function totalPrice() {
     console.log('Preu Total: ' + preuFinal);
     document.getElementById('send-order').innerHTML = `PREU ${preuFinal.toFixed(2)} €`;
 }
-/*=====  End of Calculate Total Price  ======*/
+/*=====  End of Calculate Total Price Menu  ======*/
+
+/*=============================================
+=            Calculate Total Price Carta      =
+=============================================*/
+function totalPriceCarta() {
+
+    /* Calcular Preu 1 */
+    let stored = document.getElementById('zona1').getElementsByTagName('div');
+    
+    let preu1 = 0;
+
+    if (stored) {
+        let preus;
+        for (let i = 0; i < stored.length; i++) {
+            const element = stored[i];
+            let text1 = element.childNodes[2].innerHTML;
+            text1 = text1.split("€");
+            preu1 += parseFloat(text1[0]);
+        }
+    }
+
+    /* Calcular Preu 2 */
+    stored = document.getElementById('zona2').getElementsByTagName('div');
+
+    let preu2 = 0;
+
+    if (stored) {
+        let preus;
+        for (let i = 0; i < stored.length; i++) {
+            const element = stored[i];
+            let text1 = element.childNodes[2].innerHTML;
+            text1 = text1.split("€");
+            preu1 += parseFloat(text1[0]);
+        }
+    }
+
+    /* Calcular Preu 3 */
+    stored = document.getElementById('zona3').getElementsByTagName('div');
+
+    let preu3 = 0;
+
+    if (stored) {
+        let preus;
+        for (let i = 0; i < stored.length; i++) {
+            const element = stored[i];
+            let text1 = element.childNodes[2].innerHTML;
+            text1 = text1.split("€");
+            preu1 += parseFloat(text1[0]);
+        }
+    }
+
+    /* Calcular Preu Final */
+    let preuFinal = parseFloat(preu1) + parseFloat(preu2) + parseFloat(preu3);
+    console.log('Preu Total: ' + preuFinal);
+    document.getElementById('send-order').innerHTML = `PREU ${preuFinal.toFixed(2)} €`;
+}
+/*=====  End of Calculate Total Price Carta  ======*/
 
 /*=============================================
 =            Add To Menu                      =
@@ -133,41 +287,54 @@ function addToMenu(element) {
 
 
 /*=============================================
-=            Add To Carta            =
+=            Add To Carta                     =
 =============================================*/
 function addToCarta(element) {
 
-    let id = element.id;
+    let id = element.id + 'b';
     
     let unitats = element.innerHTML;
     console.log(unitats);
 
     // Select parent of parent
     let parentOfparent = element.parentElement.parentElement;
-    console.log(parentOfparent);
+
+    // console.log(parentOfparent);
     
     // Select First Child p
-    let nom = parentOfparent.firstChild.nextSibling.innerHTML;
+    let nom = parentOfparent.childNodes[0].innerHTML + ' x ' + unitats;
 
     // Select Second Child p
-    let preu = (parseFloat(parentOfparent.childNodes[3].innerHTML) * parseFloat(element.innerHTML)).toFixed(2) + ' €';
+    let preu = (parseFloat(parentOfparent.childNodes[1].innerHTML) * parseFloat(element.innerHTML)).toFixed(2) + ' €';
 
-    if (1) {
-        if(id == 'num1' || id == 'num2' || id == 'num3' || id == 'num4'){
-            document.getElementById('primer-plat-name').innerHTML = nom;
-        
-            document.getElementById('primer-plat-price').innerHTML = preu;
+    function addRemove(id, unitats, nom, preu, area) {
+
+        let ifExist = document.getElementById(`${id}`);
+
+        if (ifExist) {
+            if (unitats == 0) {
+                console.log(ifExist.id);
+                ifExist.remove();
+            } else {
+                ifExist.remove();
+                area.insertAdjacentHTML('beforeend', `<div id="${id}" class="row-price"><p>${nom}</p><p style="display: none">${unitats}</p><p>${preu}</p></div>`);
+            }
+        } else {
+            area.insertAdjacentHTML('beforeend', `<div id="${id}" class="row-price"><p>${nom}</p><p style="display: none">${unitats}</p><p>${preu}</p></div>`);
         }
-        else if(id == 'num5' || id == 'num6' || id == 'num7' || id == 'num8'){
-            document.getElementById('segon-plat-name').innerHTML = nom;
-        
-            document.getElementById('segon-plat-price').innerHTML = preu;
-        }
-        else{
-            document.getElementById('postre-name').innerHTML = nom;
-        
-            document.getElementById('postre-price').innerHTML = preu;
-        }
+    }
+
+    if(id == 'num1b' || id == 'num2b' || id == 'num3b' || id == 'num4b'){
+        let area = document.getElementById('zona1');
+        addRemove(id, unitats, nom, preu, area);
+    }
+    else if(id == 'num5b' || id == 'num6b' || id == 'num7b' || id == 'num8b'){
+        let area = document.getElementById('zona2');
+        addRemove(id, unitats, nom, preu, area);
+    }
+    else{
+        let area = document.getElementById('zona3');
+        addRemove(id, unitats, nom, preu, area);
     }
 }
 /*=====  End of Add To Carta  ======*/
@@ -220,7 +387,7 @@ function canviElementMenu(element) {
             document.getElementById("menu_a3").style.backgroundColor = 'transparent';
             document.getElementById("menu_a4").style.backgroundColor = 'transparent';
             console.log('He entrat a menu A');
-            element.style.backgroundColor = '#009FD6';
+            element.style.backgroundColor = 'var(--main-color-transparent)';
         }
         else if(id == 'menu_b1' || id == 'menu_b2' || id == 'menu_b3' || id == 'menu_b4'){
             document.getElementById("menu_b1").style.backgroundColor = 'transparent';
@@ -228,7 +395,7 @@ function canviElementMenu(element) {
             document.getElementById("menu_b3").style.backgroundColor = 'transparent';
             document.getElementById("menu_b4").style.backgroundColor = 'transparent';
             console.log('He entrat a menu B');
-            element.style.backgroundColor = '#009FD6';
+            element.style.backgroundColor = 'var(--main-color-transparent)';
         }
         else{
             document.getElementById("menu_c1").style.backgroundColor = 'transparent';
@@ -236,7 +403,7 @@ function canviElementMenu(element) {
             document.getElementById("menu_c3").style.backgroundColor = 'transparent';
             document.getElementById("menu_c4").style.backgroundColor = 'transparent';
             console.log('He entrat a menu C');
-            element.style.backgroundColor = '#009FD6';
+            element.style.backgroundColor = 'var(--main-color-transparent)';
         }
     }
 }
@@ -278,359 +445,108 @@ function elementInnerHTMLIsEmpty(element){
 /*=====  End of Section Functions  =================*/
 
 
-
 /*===================================================
-=            Section Add Event Listeners Menu       =
+=            Section Event Listeners                =
 ===================================================*/
-/*=============================================
-=            MENU 1r PLAT                     =
-=============================================*/
-document.getElementById("menu_a1").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('primer-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+if (checkLunchTime()) {
+    const now = new Date();
+    console.log(now.getHours() + ':' + now.getMinutes());
+    /*===================================================
+    =            Section Add Event Listeners Menu       =
+    ===================================================*/
+    /*=============================================
+    =            MENU 1r PLAT                     =
+    =============================================*/
+    let addRemovePlat1 = document.querySelector('.listener1');
+    addRemovePlat1.addEventListener('click', e => {
+        
+        if(e.target.classList.contains('box-plat')){
+            
+            let name = e.target.id;
+            let element = document.getElementById(name);
+            canviElementMenu(element);
+            addToMenu(element);
+            totalPrice();
+            
+            let element2 = document.getElementById('primer-plat-name');
+            elementInnerHTMLIsNotEmpty(element2);
+        }
+    });
+    /*=====  End of MENU 1r PLAT  ======*/
 
-document.getElementById("menu_a2").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('primer-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+    /*=============================================
+    =            MENU 2n PLAT                     =
+    =============================================*/
+    let addRemovePlat2 = document.querySelector('.listener2');
+    addRemovePlat2.addEventListener('click', e => {
+        
+        if(e.target.classList.contains('box-plat')){
+            
+            let name = e.target.id;
+            let element = document.getElementById(name);
+            canviElementMenu(element);
+            addToMenu(element);
+            totalPrice();
+            
+            let element2 = document.getElementById('segon-plat-name');
+            elementInnerHTMLIsNotEmpty(element2);
+        }
+    });
+    /*=====  End of MENU 2n PLAT  ======*/
 
-document.getElementById("menu_a3").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('primer-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+    /*=============================================
+    =            MENU POSTRES                     =
+    =============================================*/
+    let addRemovePostre = document.querySelector('.listener3');
+    addRemovePostre.addEventListener('click', e => {
+        
+        if(e.target.classList.contains('box-plat')){
+            
+            let name = e.target.id;
+            let element = document.getElementById(name);
+            canviElementMenu(element);
+            addToMenu(element);
+            totalPrice();
+            
+            let element2 = document.getElementById('postre-name');
+            elementInnerHTMLIsNotEmpty(element2);
+        }
+    });
+    /*=====  End of MENU POSTRES  ======*/
+    /*=====  End of Section Add Event Listeners Menu ======*/
+} else {
+    /*===================================================
+    =            Section Add Event Listeners Carta      =
+    ===================================================*/
+    let addRemoveBox = document.querySelector('.col-menu');
+    addRemoveBox.addEventListener('click', e => {
+        if(e.target.classList.contains('remove')){
 
-document.getElementById("menu_a4").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('primer-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-/*=====  End of MENU 1r PLAT  ======*/
+            let name = e.target.nextElementSibling.id;
+            let element = document.getElementById(name);
+            let num = element.innerHTML;
 
-/*=============================================
-=            MENU 2n PLAT                     =
-=============================================*/
-document.getElementById("menu_b1").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('segon-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+            if (num == 0) {
+                element.innerHTML = 0;
+            } else {
+                element.innerHTML = parseInt(num) - 1;
+            }
+    
+            addToCarta(element);
+            totalPriceCarta();
 
-document.getElementById("menu_b2").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('segon-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+        }
 
-document.getElementById("menu_b3").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('segon-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
+        if(e.target.classList.contains('add')){
 
-document.getElementById("menu_b4").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('segon-plat-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-/*=====  End of MENU 2n PLAT  ======*/
-
-/*=============================================
-=            MENU POSTRES                     =
-=============================================*/
-document.getElementById("menu_c1").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('postre-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-
-document.getElementById("menu_c2").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('postre-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-
-document.getElementById("menu_c3").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('postre-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-
-document.getElementById("menu_c4").addEventListener('click', function(){
-    canviElementMenu(this);
-    addToMenu(this);
-    totalPrice();
-    let element = document.getElementById('postre-name');
-    elementInnerHTMLIsNotEmpty(element);
-})
-/*=====  End of MENU POSTRES  ======*/
-/*=====  End of Section Add Event Listeners Menu ======*/
-
-
-/*===================================================
-=            Section Add Event Listeners Carta      =
-===================================================*/
-// document.getElementById('remove1').addEventListener('click', function(){
-//     let element = document.getElementById('num1');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add1').addEventListener('click', function(){
-//     let element = document.getElementById('num1');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove2').addEventListener('click', function(){
-//     let element = document.getElementById('num2');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add2').addEventListener('click', function(){
-//     let element = document.getElementById('num2');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove3').addEventListener('click', function(){
-//     let element = document.getElementById('num3');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-//     addToCarta(element);
-// })
-
-// document.getElementById('add3').addEventListener('click', function(){
-//     let element = document.getElementById('num3');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove4').addEventListener('click', function(){
-//     let element = document.getElementById('num4');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add4').addEventListener('click', function(){
-//     let element = document.getElementById('num4');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove5').addEventListener('click', function(){
-//     let element = document.getElementById('num5');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add5').addEventListener('click', function(){
-//     let element = document.getElementById('num5');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove6').addEventListener('click', function(){
-//     let element = document.getElementById('num6');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add6').addEventListener('click', function(){
-//     let element = document.getElementById('num6');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove7').addEventListener('click', function(){
-//     let element = document.getElementById('num7');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add7').addEventListener('click', function(){
-//     let element = document.getElementById('num7');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove8').addEventListener('click', function(){
-//     let element = document.getElementById('num8');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add8').addEventListener('click', function(){
-//     let element = document.getElementById('num8');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove9').addEventListener('click', function(){
-//     let element = document.getElementById('num9');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add9').addEventListener('click', function(){
-//     let element = document.getElementById('num9');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove10').addEventListener('click', function(){
-//     let element = document.getElementById('num10');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add10').addEventListener('click', function(){
-//     let element = document.getElementById('num10');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove11').addEventListener('click', function(){
-//     let element = document.getElementById('num11');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add11').addEventListener('click', function(){
-//     let element = document.getElementById('num11');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('remove12').addEventListener('click', function(){
-//     let element = document.getElementById('num12');
-//     let num = element.innerHTML;
-//     if (num == 0) {
-//         element.innerHTML = 0;
-//     } else {
-//         element.innerHTML = parseInt(num) - 1;
-//     }
-
-//     addToCarta(element);
-// })
-
-// document.getElementById('add12').addEventListener('click', function(){
-//     let element = document.getElementById('num12');
-//     let num = element.innerHTML;
-//     element.innerHTML = parseInt(num) + 1;
-
-//     addToCarta(element);
-// })
-/*=====  End of Section Add Event Listeners Carta ======*/
+            let name = e.target.previousElementSibling.id;
+            let element = document.getElementById(name);
+            let num = element.innerHTML;
+            element.innerHTML = parseInt(num) + 1;
+        
+            addToCarta(element);
+            totalPriceCarta();
+        }
+    });
+    /*=====  End of Section Add Event Listeners Carta ======*/
+}
