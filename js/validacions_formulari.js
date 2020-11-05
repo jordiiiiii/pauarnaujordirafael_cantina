@@ -29,7 +29,7 @@ function validacioTelefon () {
 function validacioCorreu () {
         let missatges = document.getElementsByClassName("missatgeAlerta");
         let caixaText = document.getElementsByTagName("input");
-        let test = /^[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
+        let test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
         if (test.test(caixaText[2].value) || !caixaText[2].value.length == 0) {
             //console.info("El correu esta be escrit.");
             missatges[2].style.display = 'none';
@@ -90,14 +90,14 @@ let cartaMatiTarda = {'Cafè': '1', 'Cafè amb Llet': '1.2', 'Té': '1.5', 'Coca
 /*=====  End of List Carta Mati | Tarda  ======*/
 
 window.onload = function() {
-    /*
-    let comanda = localStorage.getItem('comandaMenu');
+    
+    let comanda = localStorage.getItem('comanda');
     console.log(JSON.parse(comanda));
     comanda = JSON.parse(comanda);
     
     //document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
     console.log(comanda);
-    */
+    
     // for (var key in cartaMatiTarda) {
     //     if (cartaMatiTarda.hasOwnProperty(key)) {
     //         console.info(key);
@@ -105,26 +105,41 @@ window.onload = function() {
     //     }
     // }
 
-    let cartaFalsa = {'Cafè': '2', 'Cafè amb Llet': '3', 'Té': '1', 'Pastís de Formatge': '8'};
+    //comanda = {"Mongeta Verda i Patata":1,"Pollastre al Forn amb Verduretes":1,"Iogurt":1};
 
-    let taula = "<table><tr><td>PRODUCTE</td><td>UNITAT/S</td><td>PREU</td></tr>";
+    let taula = '<table><tr><td class="titol">PRODUCTE</td><td class="titol">UNITAT/S</td><td class="titol">PREU</td></tr>';
     let preuTotal= parseFloat(0.0);
     let comandaAPasar = "";
-     for (var key in cartaMatiTarda) {
-        if (cartaMatiTarda.hasOwnProperty(key)) {
-            for (var key2 in cartaFalsa) {
+     for (var key in menuMigdia) {
+        if (menuMigdia.hasOwnProperty(key)) {
+            for (var key2 in comanda) {
                 if (key == key2) {
-                    taula += '<tr><td>'+key+'</td><td>'+cartaFalsa[key]+'</td><td>'+cartaMatiTarda[key]+'</td></tr>';
+                    taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+menuMigdia[key]+'</td></tr>';
                    /* console.info(key);     
                     console.info(cartaFalsa[key]);               
                     console.info(cartaMatiTarda[key]);    */
-                    preuTotal += parseFloat(cartaMatiTarda[key]*cartaFalsa[key]); 
-                    comandaAPasar += key + "_" + cartaFalsa[key] + "_" + cartaMatiTarda[key] + "/";
+                    preuTotal += parseFloat(menuMigdia[key]*comanda[key]); 
+                    comandaAPasar += key + "_" + comanda[key] + "_" + menuMigdia[key] + "/";
                 }
             }
-           
         }
     }
+    for (var key in cartaMatiTarda) {
+        if (cartaMatiTarda.hasOwnProperty(key)) {
+            for (var key2 in comanda) {
+                if (key == key2) {
+                    taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+cartaMatiTarda[key]+'</td></tr>';
+                    // console.info(key);     
+                    // console.info(cartaFalsa[key]);               
+                    // console.info(cartaMatiTarda[key]);   
+                    preuTotal += parseFloat(cartaMatiTarda[key]*comanda[key]); 
+                    comandaAPasar += key + "_" + comanda[key] + "_" + cartaMatiTarda[key] + "/";
+                }
+            }
+        }
+    }
+   
+
     comandaAPasar += "TOTAL:" + preuTotal;
     document.getElementById("hiddenComanda").value = comandaAPasar;
 
@@ -134,7 +149,7 @@ window.onload = function() {
 
     document.getElementById('llistat').innerHTML = taula;
 
-    taula = '<table><tr><td>TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
+    taula = '<table><tr><td class="titol">TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
     document.getElementById('total').innerHTML = taula;
 
 
@@ -221,11 +236,18 @@ window.onload = function() {
             validacioCorreu ();
         })            
 
-        document.getElementById('enrere').addEventListener("click", function(){
-            console.info("Enrere");
-            location.href = "menu.php";
-        });
+        
         
 };
+//document.getElementById('enrere').onclick = function () { location.href = "menu.php"; };
+
+
+// document.getElementById('enrere').addEventListener("click", function(){
+//     console.info("Enrere");
+//     location.href = "menu.php";
+// });
+
+//document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
+
 
 setInterval('validarCamps()', 1000);

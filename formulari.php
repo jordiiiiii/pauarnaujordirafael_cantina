@@ -42,43 +42,49 @@
 
                         <br><br>
 
-                        <p>DATOS DE USUARIO</p>
+                        <h2 class="titol">DATOS DE USUARIO</h2>
+                        <br>
                         <form action="confirmacio.php" method="POST">
                             <div>
-                                <label for="nom">Nom:   </label>
+                                <label for="nom">Nom:</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" id="nom" name="nom">
+                                &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
                                 
                             </div>
                             <br><div>
-                                <label for="telefon">Telefon:    </label>
+                                <label for="telefon">Telefon:</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" id="telefon" name="telefon">
+                                &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
                             </div>
                             <br>
                             <div>
-                                <label for="correu">Correu:     </label>
+                                <label for="correu">Correu:</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" id="correu" name="correu">
+                                &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
+                            </div>
                             </div>
                         <br><br>
                         <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
                         <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
                         <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
-                        <button type="button" id="enrere">Enrere</button>
-                        <input type="submit" value="Següent" id="seguent" class="boton">
-                        </form>
-                    </div>
-                </div>   
-                <!-- ========== Row Flux ========== -->    
 
-                <!-- <div class="content-flux">
-                    
-                    <div class="back-menu-butt btn">
-                        <button id="enrere"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
                     </div>
-                    <input type="submit" value="Següent" id="seguent" class=" send-confirmation-buttboton">
-                </div> -->
+         <!-- ========== Row Flux ========== -->    
+
+         <div class="content-flux">
+                    <div class="back-index-butt btn">
+                    <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
+                    </div>
+                    <input type="submit" value="Següent" id="seguent" class="boton">
+                </div>
+                </form>
+                
 
                 <!-- ========== End Rafael Jordi ============ -->
             </div>
