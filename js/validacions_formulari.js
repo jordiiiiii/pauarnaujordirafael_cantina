@@ -17,8 +17,9 @@ function validacioNom () {
 function validacioTelefon () {
          let missatges = document.getElementsByClassName("missatgeAlerta");
          let caixaText = document.getElementsByTagName("input");
-         let test = /^\d{9}$/;
-         if (test.test(caixaText[1].value || !caixaText[1].value.length == 0)) {
+         var re = /^\d{9}$/;
+        //  if (test.test(caixaText[1].value || !caixaText[1].value.length == 0)) {
+            if (re.test(caixaText[1].value)) {
              //console.info("El numero esta be escrit.");
              missatges[1].style.display = 'none';
          } else {
@@ -29,12 +30,13 @@ function validacioTelefon () {
 function validacioCorreu () {
         let missatges = document.getElementsByClassName("missatgeAlerta");
         let caixaText = document.getElementsByTagName("input");
-        let test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-        if (test.test(caixaText[2].value) || !caixaText[2].value.length == 0) {
-            //console.info("El correu esta be escrit.");
+        var re = /([^a\d\d][a-zA-Z0-9]+)\@(\binspedralbes.cat\b)/;
+        console.info(caixaText[2].value);
+        if (re.test(caixaText[2].value)) {
+            console.info("El correu esta be escrit.");
             missatges[2].style.display = 'none';
         } else {
-            //console.info("El correu esta malament escrit.");
+            console.info("El correu esta malament escrit.");
             missatges[2].style.display = 'inline';
         }   
 }

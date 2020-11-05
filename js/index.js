@@ -10,7 +10,7 @@ document.getElementById("send-admin").onclick = function () { location.href = ".
 /*=============================================
 =            Menu Button                      =
 =============================================*/
-document.getElementById("send-menu").onclick = function () { location.href = "menu.php"; };
+document.getElementById("send-menu").onclick = function () { location.href = "verifica.php"; };
 /*=====  End of Menu Button  ==========*/
 /*=====  End of Section Onclick Button  ============*/
 

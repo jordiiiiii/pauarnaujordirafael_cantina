@@ -32,20 +32,15 @@
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
                     <?php
-                        if (isset($_COOKIE['comprado'])) {
-                            include('error.php');
-                        }
-                        else {
-                            include('pedido_ok.php');
-                            setcookie('comprado', true,  strtotime("tomorrow"));
-                        }
+                        include('pedido_ok.php');
+                        setcookie('comprado', true,  strtotime("tomorrow"));
                     ?>
                 </div>
                 <!-- ========== Row Flux ========== -->             
                 <div class="content-flux">
-                    <div class="back-form-butt btn">
+                    <!-- <div class="back-form-butt btn">
                         <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
-                    </div>
+                    </div> -->
                     <button id="send-end" class="send-end-butt">The End</button>
                 </div>
                 <!-- ========== End Codi Pau ============ -->
@@ -61,7 +56,6 @@
     <!-- third party js -->
     <script src="../js/changeConfirmationPageTitle.js"></script>
     <script type="text/javascript">
-        document.getElementById("back-to-form").onclick = function () { location.href = "formulari.php"; };
         document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
     </script>
     <!-- third party js ends -->
