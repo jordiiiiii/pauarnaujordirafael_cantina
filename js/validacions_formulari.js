@@ -39,15 +39,107 @@ function validacioCorreu () {
         }   
 }
 
-window.onload = function() {
+function validarCamps (){
+    //console.info("HAGO LA FUNCION");
+    validacioNom ();
+    validacioTelefon ();
+    validacioCorreu ();
 
+    let missatges = document.getElementsByClassName("missatgeAlerta");
+    let pasarSeguent = false;     
+    let botoasd = document.getElementById("seguent");
+
+    for (let index = 0; index < missatges.length; index++) {
+        if (missatges[index].style.display != "none") {
+            //console.info("ALGO ANDA MAL");
+            pasarSeguent = false;
+            index = missatges.length;
+        } else { 
+            index == missatges.length;
+            pasarSeguent = true;
+        }
+    }
+    //console.info(pasarSeguent);
+    if (pasarSeguent) {
+        console.info("PASAR A LA OTRA PAGINA");
+        //let caixaText = document.getElementsByTagName("input");
+        document.getElementById("hiddenNom").value = document.getElementById("nom").value;
+        document.getElementById("hiddenCorreu").value = document.getElementById("correu").value;
+        botoasd.disabled=false;
+    } else {
+       // console.info("NO PASAS A LA OTRA PAGINA");
+       botoasd.disabled=true;
+    }
+}
+
+/*=============================================
+=            List Menu Migdia                 =
+=============================================*/
+let menuMigdia = {'Mongeta Verda i Patata': '3.5', 'Cigrons Estofats': '3', 'Patates Duquessa': '2', 'Amanida Catalana': '2.5'
+, 'Pollastre al Forn amb Verduretes': '3.5', 'Truita de Carbassó i amanida': '2.5', 'Hamburgueses amb Patates Xips': '3.5', 'Pizza Casolana de Pernil i Formatge': '3.5'
+, 'Pastís de Formatge': '2.5', 'Iogurt': '1.5', 'Flam': '1.5', 'Fruita de Temporada': '1'};
+/*=====  End of List Menu Migdia  ======*/
+
+
+/*=============================================
+=            List Carta Mati | Tarda          =
+=============================================*/
+let cartaMatiTarda = {'Cafè': '1', 'Cafè amb Llet': '1.2', 'Té': '1.5', 'Coca-Cola': '2'
+, 'Dònut': '1.5', 'Croissant': '1.5', 'Pastís de Formatge': '2.5', 'Poma': '1'
+, 'Entrepa de Fuet': '2.5', 'Bikini': '2.5', 'Pizza 4 Estacions': '3.5', 'Frankfurt': '3'};
+/*=====  End of List Carta Mati | Tarda  ======*/
+
+window.onload = function() {
+    /*
     let comanda = localStorage.getItem('comandaMenu');
     console.log(JSON.parse(comanda));
     comanda = JSON.parse(comanda);
+    
     //document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
     console.log(comanda);
+    */
+    // for (var key in cartaMatiTarda) {
+    //     if (cartaMatiTarda.hasOwnProperty(key)) {
+    //         console.info(key);
+    //         console.info(cartaMatiTarda[key]);
+    //     }
+    // }
 
-    let taula = "<table><tr><td>PRODUCTE</td><td>UNITAT/S</td></tr>";
+    let cartaFalsa = {'Cafè': '2', 'Cafè amb Llet': '3', 'Té': '1', 'Pastís de Formatge': '8'};
+
+    let taula = "<table><tr><td>PRODUCTE</td><td>UNITAT/S</td><td>PREU</td></tr>";
+    let preuTotal= parseFloat(0.0);
+    let comandaAPasar = "";
+     for (var key in cartaMatiTarda) {
+        if (cartaMatiTarda.hasOwnProperty(key)) {
+            for (var key2 in cartaFalsa) {
+                if (key == key2) {
+                    taula += '<tr><td>'+key+'</td><td>'+cartaFalsa[key]+'</td><td>'+cartaMatiTarda[key]+'</td></tr>';
+                   /* console.info(key);     
+                    console.info(cartaFalsa[key]);               
+                    console.info(cartaMatiTarda[key]);    */
+                    preuTotal += parseFloat(cartaMatiTarda[key]*cartaFalsa[key]); 
+                    comandaAPasar += key + "_" + cartaFalsa[key] + "_" + cartaMatiTarda[key] + "/";
+                }
+            }
+           
+        }
+    }
+    comandaAPasar += "TOTAL:" + preuTotal;
+    document.getElementById("hiddenComanda").value = comandaAPasar;
+
+    console.log("COMANDA: "+document.getElementById("hiddenComanda").value);
+
+    taula += '</table>';
+
+    document.getElementById('llistat').innerHTML = taula;
+
+    taula = '<table><tr><td>TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
+    document.getElementById('total').innerHTML = taula;
+
+
+
+
     
     //console.info(comanda.PrimerPlat);
     //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
@@ -55,7 +147,7 @@ window.onload = function() {
     //let preu = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
     //console.info(preu.substring(0, preu.indexOf("€")));
 
-
+    /*
     let preuTotal= parseFloat(0.0);
     if (comanda.hasOwnProperty("PrimerPlat")){
         let p1 = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
@@ -88,15 +180,11 @@ window.onload = function() {
 
     console.info(preuTotal);
     taula = '<table><tr><td>TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
-
     document.getElementById('total').innerHTML = taula;
-    
-    let formulari = '<form action="1.7RafaelGarcia.php" method="POST"><div><label for="nom">Nom:   </label><input type="text" id="nom" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="telefon">Telefon:    </label><input type="text" id="telefon" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div><br><div><label for="correu">Correu:    </label><input type="text" id="correu" name="model"><p class="missatgeAlerta">Camp Incorrecte*</p></div></form>';
-    document.getElementById("formulari").innerHTML = formulari;
-       
+    */
 
-
-        ocultarMissatges ();
+        let boto = document.getElementById("seguent");
+        boto.disabled=true;
     
         let extraerUnidades = document.getElementsByClassName("unidades");
         let unidadesParseadas = [];
@@ -119,15 +207,6 @@ window.onload = function() {
             total += unidadesParseadas[index] * preciosParseadas[index];
         }
         //console.info("TOTAL: " + total);
-
-        /*
-        let codigoTablaTotal = '<br><table border="2"><tr><th>TOTAL:</th><th>'+total+'</th></tr></table>'; 
-        let tablaTotal = document.getElementById("taulaTotal");
-        tablaTotal.innerHTML = codigoTablaTotal;
-        */
-
-
-    
        
 
         document.getElementById('nom').addEventListener("blur", function(){
@@ -143,55 +222,10 @@ window.onload = function() {
         })            
 
         document.getElementById('enrere').addEventListener("click", function(){
+            console.info("Enrere");
             location.href = "menu.php";
         });
-
-
-        document.getElementById('seguent').addEventListener("click", function(){
-            //console.info("Boto següent.");  
         
-            //////////////////////////// ACTIVAR MAS TARDER //////////////////////////////////////
-            /*    validacioNom ();
-            validacioTelefon ();
-            validacioCorreu ();*/
-            ////////////////////////////////////////////////////////////////////////////////////
-            let missatges = document.getElementsByClassName("missatgeAlerta");
-            let pasarSeguent = false;         
-
-            for (let index = 0; index < missatges.length; index++) {
-                if (missatges[index].style.display != "none") {
-                    //console.info("ALGO ANDA MAL");
-                    pasarSeguent = false;
-                    index = missatges.length;
-                } else { 
-                    index == missatges.length;
-                    pasarSeguent = true;
-                }
-            }
-            //console.info(pasarSeguent);
-            if (pasarSeguent) {
-                console.info("PASAR A LA OTRA PAGINA");
-                let caixaText = document.getElementsByTagName("input");
-                var dadesUsuari = new Map();
-                dadesUsuari["nom"]=caixaText[0].value;
-                dadesUsuari["correu"]=caixaText[2].value;
-
-////////////////// CREAR FICHERO 
-                
-
-//////////////////
-
-                localStorage.setItem("dadesUsuari", JSON.stringify(dadesUsuari));
-                location.href = "confirmacio.php";
-            } else {
-                console.info("NO PASAS A LA OTRA PAGINA");
-            }
-            
-        }) 
-        
-        
-
 };
 
-
-
+setInterval('validarCamps()', 1000);

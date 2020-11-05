@@ -10,6 +10,8 @@ document.getElementById("back-to-index").onclick = function () { location.href =
 /*=============================================
 =            Next Button                      =
 =============================================*/
+// document.getElementById("send-menu").onclick = function () { location.href = "formulari.php"; };
+
 if (checkLunchTime()) {
     document.getElementById("send-order").onclick = function () { 
                 
@@ -85,12 +87,13 @@ if (checkLunchTime()) {
         
         if (map[1] === '}') {
             console.log(JSON.stringify(comanda));
-            alert('Selecciona algun producte, carallot!');
+            alert('Selecciona algun producte, ghtdgdrg!');
         }
         else {
+            console.log("NOOOOOOOOOOOOOOOO");
             console.log(JSON.stringify(comanda));
             localStorage.setItem('comandaCartaMatiTarda', JSON.stringify(comanda));
-            // location.href = "formulari.php";
+            location.href = "formulari.php";
         }
     
     };

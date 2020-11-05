@@ -6,8 +6,12 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
     <meta name="author" content="Rafael Garcia Perez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Pedralbes Validacio</title>
+    <title>Cantina Pedralbes Confirmation</title>
+   
     <?php include('includes.inc');?>
+
+    <link rel="stylesheet" href="../css/cssRafael.css">
+
 </head>
 <body>
     <!-- Begin Page -->
@@ -30,17 +34,53 @@
                 <!-- ========== Codi Rafael Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <!-- <div id="comanda"></div> -->
-                    <?php include('validacions.php');?>
-                </div>
-                <!-- ========== Row Flux ========== -->             
-                <div class="content-flux">
-                    <div class="back-menu-butt btn">
-                        <button id="back-to-menu"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
+                    <div>
+                        <br><br>             
+                        <div id="llistat"></div>
+                        <br>
+                        <div id="total"></div>
+
+                        <br><br>
+
+                        <p>DATOS DE USUARIO</p>
+                        <form action="confirmacio.php" method="POST">
+                            <div>
+                                <label for="nom">Nom:   </label>
+                                <input type="text" id="nom" name="nom">
+                                <p class="missatgeAlerta">Camp Incorrecte*</p>
+                                
+                            </div>
+                            <br><div>
+                                <label for="telefon">Telefon:    </label>
+                                <input type="text" id="telefon" name="telefon">
+                                <p class="missatgeAlerta">Camp Incorrecte*</p>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="correu">Correu:     </label>
+                                <input type="text" id="correu" name="correu">
+                                <p class="missatgeAlerta">Camp Incorrecte*</p>
+                            </div>
+                        <br><br>
+                        <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
+                        <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
+                        <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
+                        <button type="button" id="enrere">Enrere</button>
+                        <input type="submit" value="Següent" id="seguent" class="boton">
+                        </form>
                     </div>
-                    <button id="send-confirmation" class="send-confirmation-butt">CONFIRMACIO</button>
-                </div>
-                <!-- ========== End Codi Rafael ============ -->
+                </div>   
+                <!-- ========== Row Flux ========== -->    
+
+                <!-- <div class="content-flux">
+                    
+                    <div class="back-menu-butt btn">
+                        <button id="enrere"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
+                    </div>
+                    <input type="submit" value="Següent" id="seguent" class=" send-confirmation-buttboton">
+                </div> -->
+
+                <!-- ========== End Rafael Jordi ============ -->
             </div>
         </div>
         <!-- ============================================================== -->
@@ -52,17 +92,7 @@
     </div>
     <!-- third party js -->
     <script src="../js/changeDetailsPageTitle.js"></script>
-
-
-    <!-- <script type="text/javascript">
-        let comanda = localStorage.getItem('comandaMenu');
-        console.log(JSON.parse(comanda));
-        comanda = JSON.parse(comanda);
-        document.getElementById('comanda').innerHTML = comanda.PrimerPlat + '___' + comanda.SegonPlat + '___' + comanda.Postre;
-
-        document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
-        document.getElementById("send-confirmation").onclick = function () { location.href = "confirmacio.php"; };
-    </script> -->
+    <script src="../js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
     <!-- third party js ends -->
 </body>
 </html>
