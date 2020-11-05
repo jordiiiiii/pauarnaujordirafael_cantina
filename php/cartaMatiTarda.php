@@ -23,7 +23,7 @@
             <div class="content-col">
                 <!-- ========== Row Head ========== -->
                 <div class="content-head">
-                    <h2>BENVINGUTS</h2>
+                    <h2>BENVINGUTS</h2> 
                     <h2>LA TEVA COMANDA</h2>
                     <h2>DETALLS ENCARREC</h2>
                     <h2>CONFIRMACIO</h2>

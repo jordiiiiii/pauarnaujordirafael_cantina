@@ -32,13 +32,8 @@
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
                     <?php
-                        if (isset($_COOKIE['comprado'])) {
-                            include('error.php');
-                        }
-                        else {
-                            include('pedido_ok.php');
-                            setcookie('comprado', true,  strtotime("tomorrow"));
-                        }
+                        include('pedido_ok.php');
+                        setcookie('comprado', true,  strtotime("tomorrow"));
                     ?>
                 </div>
                 <!-- ========== Row Flux ========== -->             
