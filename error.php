@@ -5,6 +5,7 @@
     <meta name="description" content="Website Cantina Institut Pedralbes">
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
     <meta name="author" content="Jordi Gorbe Neira">
+    <meta http-equiv="refresh" content="5;index.php" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Menu i Carta</title>
     <?php include('includes.inc');?>
@@ -32,16 +33,22 @@
                 <!-- ========== Codi Jordi Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <div align="center">
+                    <div id="error">
                         <div>
                             <h1> Oops! <!/h1>
                         </div>
-                        <div top:10px>
-                            <img src="../img/error.png"/>
-                            <h2>Ja has realitzat la teva comanda diària</h2>
-                            <h1>Seràs redirigit automàticament a la pàgina principal</h1>
+                        <div>
+                            <img src="img/error.png"/>
+                            <h1>Ja has realitzat la teva comanda diària</h1>
+                            <h2>Seràs redirigit automàticament a la pàgina principal en 5 segons</h2>
                         </div>
                     </div>
+                </div>
+                <div class="content-flux">
+                    <!-- <div class="back-form-butt btn">
+                        <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
+                    </div> -->
+                    <button id="send-end" class="send-end-butt">Tornar enrere</button>
                 </div>
                 <!-- ========== End Codi Jordi ============ -->
             </div>
@@ -55,7 +62,6 @@
     </div>
     <!-- third party js -->
     <script src="js/changeMenuPageTitle.js"></script>
-    <script src="js/menu.js"></script>
     <!-- third party js ends -->
 </body>
 </html>
