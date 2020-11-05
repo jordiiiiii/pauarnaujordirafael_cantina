@@ -87,10 +87,9 @@ if (checkLunchTime()) {
         
         if (map[1] === '}') {
             console.log(JSON.stringify(comanda));
-            alert('Selecciona algun producte, ghtdgdrg!');
+            alert('Selecciona algun producte, Carallot!');
         }
         else {
-            console.log("NOOOOOOOOOOOOOOOO");
             console.log(JSON.stringify(comanda));
             localStorage.setItem('comandaCartaMatiTarda', JSON.stringify(comanda));
             location.href = "formulari.php";

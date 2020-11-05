@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Menu i Carta</title>
     <?php include('includes.inc');?>
-    <link rel="stylesheet" href="../css/jordiMenu.css">
-    <link rel="stylesheet" href="../css/jordiCartaMatiTarda.css">
+    <link rel="stylesheet" href="css/jordiMenu.css">
+    <link rel="stylesheet" href="css/jordiCartaMatiTarda.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -58,9 +58,9 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="../js/printMenuCarta.js"></script>
-    <script src="../js/changeMenuPageTitle.js"></script>
-    <script src="../js/menu.js"></script>
+    <script src="js/printMenuCarta.js"></script>
+    <script src="js/changeMenuPageTitle.js"></script>
+    <script src="js/menu.js"></script>
     <!-- third party js ends -->
 </body>
 </html>

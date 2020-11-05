@@ -10,7 +10,7 @@
    
     <?php include('includes.inc');?>
 
-    <link rel="stylesheet" href="../css/cssRafael.css">
+    <link rel="stylesheet" href="css/cssRafael.css">
 
 </head>
 <body>
@@ -91,8 +91,8 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="../js/changeDetailsPageTitle.js"></script>
-    <script src="../js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
+    <script src="js/changeDetailsPageTitle.js"></script>
+    <script src="js/validacions_formulari.js" language="javascript" type="text/javascript"></script>
     <!-- third party js ends -->
 </body>
 </html>
