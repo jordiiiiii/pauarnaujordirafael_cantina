@@ -1,3 +1,5 @@
+document.getElementById("enrere").onclick = function () { location.href = "menu.php"; };
+
 function ocultarMissatges () {
     let missatges = document.getElementsByClassName("missatgeAlerta");
     for (let index = 0; index < missatges.length; index++) {
@@ -42,7 +44,6 @@ function validacioCorreu () {
 }
 
 function validarCamps (){
-    //console.info("HAGO LA FUNCION");
     validacioNom ();
     validacioTelefon ();
     validacioCorreu ();
@@ -53,7 +54,6 @@ function validarCamps (){
 
     for (let index = 0; index < missatges.length; index++) {
         if (missatges[index].style.display != "none") {
-            //console.info("ALGO ANDA MAL");
             pasarSeguent = false;
             index = missatges.length;
         } else { 
@@ -117,9 +117,6 @@ window.onload = function() {
             for (var key2 in comanda) {
                 if (key == key2) {
                     taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+menuMigdia[key]+'</td></tr>';
-                   /* console.info(key);     
-                    console.info(cartaFalsa[key]);               
-                    console.info(cartaMatiTarda[key]);    */
                     preuTotal += parseFloat(menuMigdia[key]*comanda[key]); 
                     comandaAPasar += key + "_" + comanda[key] + "_" + menuMigdia[key] + "/";
                 }
@@ -131,9 +128,6 @@ window.onload = function() {
             for (var key2 in comanda) {
                 if (key == key2) {
                     taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+cartaMatiTarda[key]+'</td></tr>';
-                    // console.info(key);     
-                    // console.info(cartaFalsa[key]);               
-                    // console.info(cartaMatiTarda[key]);   
                     preuTotal += parseFloat(cartaMatiTarda[key]*comanda[key]); 
                     comandaAPasar += key + "_" + comanda[key] + "_" + cartaMatiTarda[key] + "/";
                 }
@@ -206,8 +200,6 @@ window.onload = function() {
         let extraerUnidades = document.getElementsByClassName("unidades");
         let unidadesParseadas = [];
         for (let index = 0; index < extraerUnidades.length; index++) {
-            //console.info(extraerUnidades[index].textContent);
-            //console.info(extraerUnidades[index].textContent.substring(1));
             unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
             
         }
@@ -215,16 +207,13 @@ window.onload = function() {
         let precios = document.getElementsByClassName("precio");
         let preciosParseadas = [];
         for (let index = 0; index < precios.length; index++) {
-            //console.info(precios[index].textContent);    
             preciosParseadas[index] = parseFloat(precios[index].textContent);
         }
 
         let total = 0;
         for (let index = 0; index < unidadesParseadas.length; index++) {
             total += unidadesParseadas[index] * preciosParseadas[index];
-        }
-        //console.info("TOTAL: " + total);
-       
+        }       
 
         document.getElementById('nom').addEventListener("blur", function(){
             validacioNom ();
@@ -240,8 +229,8 @@ window.onload = function() {
 
         
         
+        
 };
-//document.getElementById('enrere').onclick = function () { location.href = "menu.php"; };
 
 
 // document.getElementById('enrere').addEventListener("click", function(){
@@ -249,7 +238,6 @@ window.onload = function() {
 //     location.href = "menu.php";
 // });
 
-//document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
 
 
-setInterval('validarCamps()', 1000);
+setInterval('validarCamps()', 1500);

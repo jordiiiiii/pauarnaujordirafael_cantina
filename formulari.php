@@ -34,47 +34,49 @@
                 <!-- ========== Codi Rafael Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <div>
-                        <br><br>             
-                        <div id="llistat"></div>
-                        <br>
-                        <div id="total"></div>
-
-                        <br><br>
-
-                        <h2 class="titol">DATOS DE USUARIO</h2>
-                        <br>
-                        <form action="confirmacio.php" method="POST">
-                            <div>
-                                <label for="nom">Nom:</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="text" id="nom" name="nom">
-                                &nbsp;&nbsp;&nbsp;
-                                <p class="missatgeAlerta">Camp Incorrecte*</p>
-                                
-                            </div>
-                            <br><div>
-                                <label for="telefon">Telefon:</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="text" id="telefon" name="telefon">
-                                &nbsp;&nbsp;&nbsp;
-                                <p class="missatgeAlerta">Camp Incorrecte*</p>
-                            </div>
+                    <div class="content-left-side"><!-- ========== Aqui pintarem la graella amb una funcio de js ======== -->
+                    <br><br>             
+                            <div id="llistat" align="left"></div>
                             <br>
-                            <div>
-                                <label for="correu">Correu:</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="text" id="correu" name="correu">
-                                &nbsp;&nbsp;&nbsp;
-                                <p class="missatgeAlerta">Camp Incorrecte*</p>
-                            </div>
-                            </div>
-                        <br><br>
-                        <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
-                        <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
-                        <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
-
+                            <div id="total"></div>
                     </div>
+
+                    <!-- ========== Column Right ======= --> 
+                    <div class="content-right-side"><!-- ========== Aqui pintarem la graella amb una funcio de js ======== -->
+                        <div align="left">
+                            <br><br>
+                            <h2 class="titol">DATOS DE USUARIO</h2>
+                            <br>
+                            <form action="confirmacio.php" method="POST">
+                                <div>
+                                    <label for="nom">Nom:</label>
+                                    <input type="text" id="nom" name="nom">
+                                    <p class="missatgeAlerta">Camp Incorrecte*</p>
+                                    
+                                </div>
+                                <br><div>
+                                    <label for="telefon">Telefon:</label>
+                                    <input type="text" id="telefon" name="telefon">
+                                    <p class="missatgeAlerta">Camp Incorrecte*</p>
+                                </div>
+                                <br>
+                                <div>
+                                    <label for="correu">Correu:</label>
+                                    <input type="text" id="correu" name="correu">
+                                    <p class="missatgeAlerta">Camp Incorrecte*</p>
+                                </div>
+                                </div>
+                            <br><br>
+                            <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
+                            <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
+                            <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
+                            <div class="back-index-butt btn">
+                                <button type="button" id="enrere">Enrere</button>
+                            </div>
+                            <input type="submit" value="Següent" id="seguent" class="boton">    
+                        </div>
+                    </div>
+                    
          <!-- ========== Row Flux ========== -->    
 
          <div class="content-flux">

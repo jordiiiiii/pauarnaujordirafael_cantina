@@ -31,9 +31,17 @@
                 <!-- ========== Codi Pau Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
+                    <h1>COMANDA COMPLETADA AMB ÈXIT</h1>
+                    <p id="gracies">Gràcies ${nom} per la teva compra</p>
+                    <p>Passa-ho a buscar a la cantina</p>
                     <?php
-                        include('pedido_ok.php');
                         setcookie('comprado', true,  strtotime("tomorrow"));
+                        $to = "email";
+                        $subject = "Resguard comanda CIP";
+                        $txt = "comanda";
+                        $headers = "From: cantinapedralbes@inspedralbes.cat";
+
+                        mail($to,$subject,$txt,$headers);
                     ?>
                 </div>
                 <!-- ========== Row Flux ========== -->             
@@ -54,7 +62,8 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="../js/changeConfirmationPageTitle.js"></script>
+    <script src="js/changeConfirmationPageTitle.js"></script>
+    <script src="js/confirmacio.js"></script>
     <script type="text/javascript">
         document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
     </script>
