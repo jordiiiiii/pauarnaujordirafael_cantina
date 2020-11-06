@@ -95,7 +95,7 @@ ol, ul {
     /* MarginVerticalRow */
     --margin-vert: 80px;
     /* MarginLateralCentralColumn */
-    --margin-hort: 64px;
+    --margin-hort: 32px;
 }
 
 html {
@@ -152,7 +152,7 @@ button:hover {
 =======================================================*/
 .header-row {
     background-color: var(--main-bg-box-color);
-    height: 112px;
+    height: 96px;
     display: flex;
     padding: 16px 16px;
 }
@@ -214,14 +214,14 @@ button:hover {
 
 /* LEVEL 2 */
 .content-col {
-    background-color: var(--main-bg-box-color);
+    background-color: transparent;
     min-width: 960px;
     max-width: 1120px;
     box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    margin-top: var(--margin-hort)/2;
-    margin-bottom: var(--margin-hort)/2;
+    margin-top: var(--margin-hort);
+    margin-bottom: var(--margin-hort);
 }
 
 /* LEVEL 3 */
@@ -233,7 +233,10 @@ button:hover {
 /* LEVEL 3 */
 .content-main {
     display: flex;
-    margin: var(--margin-hort) var(--margin-vert);
+    margin-top: var(--margin-hort);
+    margin-bottom: var(--margin-hort);
+    margin-left: var(--margin-vert);
+    margin-right: var(--margin-vert);
 }
 
 
@@ -280,7 +283,7 @@ button:hover {
 
 /* LEVEL 5 */
 .title-left {
-    padding-bottom: 36px;
+    padding-bottom: var(--margin-hort);
 }
 .title-left h3 {
     font-weight: var(--w4-font);
@@ -302,7 +305,7 @@ button:hover {
 
 /* LEVEL 5 */
 .title-right {
-    padding-bottom: 36px;
+    padding-bottom: var(--margin-hort);
 }
 .title-right h3 {
     font-weight: var(--w4-font);
@@ -413,16 +416,12 @@ button:hover {
 /*=============================================
 =            Flux Buttons Confirmacio         =
 =============================================*/
+.back-index-butt,
 .back-form-butt {
     height: 48px;
     display: flex;
     flex: 4;
     text-align: start;
-}
-#back-to-form {
-    background-color: transparent;
-    color: var(--main-color);
-    align-items: center;
 }
 .send-end-butt {
     background-color: var(--main-color);
@@ -435,5 +434,11 @@ button:hover {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
     font-size: 18px;
     font-weight: var(--w2-font);
+}
+
+#back-to-form {
+    background-color: transparent;
+    color: var(--main-color);
+    align-items: center;
 }
 /*=====  End of Flux Buttons Confirmacio  ======*/

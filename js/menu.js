@@ -10,12 +10,10 @@ document.getElementById("back-to-index").onclick = function () { location.href =
 /*=============================================
 =            Next Button                      =
 =============================================*/
-// document.getElementById("send-menu").onclick = function () { location.href = "formulari.php"; };
-
 if (checkLunchTime()) {
     document.getElementById("send-order").onclick = function () { 
                 
-        let comanda = new Map();
+        let comandamenu = new Map();
     
         let nomPlat1 = document.getElementById('primer-plat-name').innerHTML;
         let nomPlat2 = document.getElementById('segon-plat-name').innerHTML;
@@ -23,17 +21,17 @@ if (checkLunchTime()) {
 
 
         if (nomPlat1 != '') {
-            comanda[nomPlat1] = 1;
+            comandamenu[nomPlat1] = 1;
         }
         if (nomPlat2 != '') {
-            comanda[nomPlat2] = 1;
+            comandamenu[nomPlat2] = 1;
         }
         if (nomPostre != '') {
-            comanda[nomPostre] = 1;
+            comandamenu[nomPostre] = 1;
         }
     
-        console.log(comanda);
-        console.log(JSON.stringify(comanda));
+        console.log(comandamenu);
+        console.log(JSON.stringify(comandamenu));
     
         if (nomPlat1 == '' && nomPlat2 == '' && nomPostre == '') {  
             alert('Selecciona algun producte, carallot!');
@@ -42,15 +40,16 @@ if (checkLunchTime()) {
             alert(`Ok Boomer, però agafa un producte més. De bon rollo t'ho dic`);
         }
         else {
-            localStorage.setItem('comandaMenu', JSON.stringify(comanda));
+            console.log(JSON.stringify(comandamenu));
+            localStorage.setItem('comanda', JSON.stringify(comandamenu));
             location.href = "formulari.php"; ////////////////////////////////////////////// Comenta si no vols passar de pàgina
         }
-    
     };
+
 } else {
     document.getElementById("send-order").onclick = function () { 
                 
-        let comanda = new Map();
+        let comandamati = new Map();
     
         let stored = document.getElementById('zona1').getElementsByTagName('div');
 
@@ -58,7 +57,9 @@ if (checkLunchTime()) {
             let preus;
             for (let i = 0; i < stored.length; i++) {
                 const element = stored[i];
-                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+                let producte = element.childNodes[0].innerHTML;
+                producte = producte.split(" x");
+                comandamati[producte[0]] = element.childNodes[1].innerHTML;
             }
         }
 
@@ -68,7 +69,9 @@ if (checkLunchTime()) {
             let preus;
             for (let i = 0; i < stored.length; i++) {
                 const element = stored[i];
-                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+                let producte = element.childNodes[0].innerHTML;
+                producte = producte.split(" x");
+                comandamati[producte[0]] = element.childNodes[1].innerHTML;
             }
         }
 
@@ -78,24 +81,27 @@ if (checkLunchTime()) {
             let preus;
             for (let i = 0; i < stored.length; i++) {
                 const element = stored[i];
-                comanda[element.childNodes[0].innerHTML] = element.childNodes[1].innerHTML;
+                let producte = element.childNodes[0].innerHTML;
+                producte = producte.split(" x");
+                comandamati[producte[0]] = element.childNodes[1].innerHTML;
             }
         }
 
         // Check if string is empty
-        let map = JSON.stringify(comanda);
+        let map = JSON.stringify(comandamati);
         
         if (map[1] === '}') {
-            console.log(JSON.stringify(comanda));
-            alert('Selecciona algun producte, Carallot!');
+            console.log(JSON.stringify(comandamati));
+            alert('Selecciona algun producte, carallot!');
         }
         else {
-            console.log(JSON.stringify(comanda));
-            localStorage.setItem('comandaCartaMatiTarda', JSON.stringify(comanda));
-            location.href = "formulari.php";
+            console.log(JSON.stringify(comandamati));
+            localStorage.setItem('comanda', JSON.stringify(comandamati));
+            location.href = "formulari.php"; ////////////////////////////////////////////// Comenta si no vols passar de pàgina
         }
     
     };
+
 }
 /*=====  End of Next Button  ==========*/
 /*=====  End of Section Onclick Button  ============*/
@@ -115,21 +121,26 @@ function checkLunchTime() {
 
     console.log(hour + ':' + minutes);
 
-    // Check hour between 11:30 and 21:30
-    if ((hour > 10 && hour < 22)) {
-        if ((hour > 11 && hour < 21)) {
+    // Check hour between 11:30 and 15:30
+    let hora1 = 1;
+    let minut1 = 30;
+    let hora2 = 15;
+    let minut2 = 30;
+
+    if ((hour > (hora1 - 1) && hour < (hora2 + 1))) {
+        if ((hour > hora1 && hour < hora2)) {
             return true;
         }
-        else if (hour == 11) {
-            if (minutes > 29) {
+        else if (hour == hora1) {
+            if (minutes > (minut1 - 1)) {
                 return true;
             }
             else {
                 return false;
             }
         }
-        else if (hour == 21) {
-            if (minutes < 30) {
+        else if (hour == hora2) {
+            if (minutes < minut2) {
                 return true;
             }
             else {
@@ -143,6 +154,7 @@ function checkLunchTime() {
     else {
         return false;
     }
+
 }
 /*=====  End of Check Hour Now  ======*/
 
@@ -194,6 +206,7 @@ function totalPrice() {
     let preuFinal = parseFloat(preuPlat1) + parseFloat(preuPlat2) + parseFloat(preuPostre);
     console.log('Preu Total: ' + preuFinal);
     document.getElementById('send-order').innerHTML = `PREU ${preuFinal.toFixed(2)} €`;
+
 }
 /*=====  End of Calculate Total Price Menu  ======*/
 
@@ -251,6 +264,7 @@ function totalPriceCarta() {
     let preuFinal = parseFloat(preu1) + parseFloat(preu2) + parseFloat(preu3);
     console.log('Preu Total: ' + preuFinal);
     document.getElementById('send-order').innerHTML = `PREU ${preuFinal.toFixed(2)} €`;
+
 }
 /*=====  End of Calculate Total Price Carta  ======*/
 
@@ -284,6 +298,7 @@ function addToMenu(element) {
             document.getElementById('postre-price').innerHTML = preu;
         }
     }
+
 }
 /*=====  End of Add To Menu  ======*/
 
@@ -338,6 +353,7 @@ function addToCarta(element) {
         let area = document.getElementById('zona3');
         addRemove(id, unitats, nom, preu, area);
     }
+
 }
 /*=====  End of Add To Carta  ======*/
 
@@ -408,6 +424,7 @@ function canviElementMenu(element) {
             element.style.backgroundColor = 'var(--main-color-transparent)';
         }
     }
+
 }
 /*=====  End of Change Menu  =============*/
 
@@ -425,6 +442,7 @@ function elementInnerHTMLIsNotEmpty(element){
         // Change border bottom color of the Div
         parentOfparent.style.borderBottom = '2px solid var(--main-graphic-color)';
     }
+
 }
 /*=====  End of Name Right Side Is Empty  ======*/
 
@@ -442,6 +460,7 @@ function elementInnerHTMLIsEmpty(element){
         // Change border bottom color of the Div
         parentOfparent.style.borderBottom = '1px solid var(--main-color)';
     }
+    
 }
 /*=====  End of Name Right Side Is Empty  ======*/
 /*=====  End of Section Functions  =================*/

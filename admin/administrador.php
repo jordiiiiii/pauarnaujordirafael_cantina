@@ -7,13 +7,16 @@
     <meta name="author" content="Arnau Fernandez Jerez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <?php include('../includes.inc');?>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="../css/arnauAdmin.css">
 </head>
 <body>
     <!-- Begin Page -->
     <div class="row-layout">
         <!-- ========== Header Start ========== -->
-        <?php include('../header.php');?>
+        <?php include('header.php');?>
         <!-- ========== End Header ========== -->
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -45,11 +48,11 @@
         <!-- End Page Content -->
         <!-- ============================================================== -->
         <!-- ========== Footer Start ========== -->
-        <?php include('../footer.php');?>
+        <?php include('footer.php');?>
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script type="text/javascript">document.getElementById("back-to-index").onclick = function () { location.href = "index.php"; };</script>
+    <script type="text/javascript">document.getElementById("back-to-index").onclick = function () { location.href = "../index.php"; };</script>
     <!-- third party js ends -->
 </body>
 </html>

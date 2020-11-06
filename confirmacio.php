@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Confirmation</title>
     <?php include('includes.inc');?>
-    <link rel="stylesheet" href="css/rafaelFormulari.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -43,9 +42,7 @@
                 </div>
                 <!-- ========== Row Flux ========== -->             
                 <div class="content-flux">
-                    <div class="back-form-butt btn">
-                        <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
-                    </div>
+
                     <button id="send-end" class="send-end-butt">The End</button>
                 </div>
                 <!-- ========== End Codi Pau ============ -->
@@ -59,9 +56,8 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="../js/changeConfirmationPageTitle.js"></script>
+    <script src="js/changeConfirmationPageTitle.js"></script>
     <script type="text/javascript">
-        document.getElementById("back-to-form").onclick = function () { location.href = "formulari.php"; };
         document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
     </script>
     <!-- third party js ends -->

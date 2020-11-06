@@ -6,12 +6,9 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
     <meta name="author" content="Rafael Garcia Perez">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Pedralbes Confirmation</title>
-   
+    <title>Cantina Pedralbes Formulari</title>
     <?php include('includes.inc');?>
-
-    <link rel="stylesheet" href="css/cssRafael.css">
-
+    <link rel="stylesheet" href="css/rafaelFormulari.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -42,7 +39,7 @@
 
                         <br><br>
 
-                        <h2 class="titol">DATOS DE USUARIO</h2>
+                        <h2 class="titol">DADES USUARI</h2>
                         <br>
                         <form action="confirmacio.php" method="POST">
                             <div>
@@ -51,16 +48,14 @@
                                 <input type="text" id="nom" name="nom">
                                 &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
-                                
-                            </div>
-                            <br><div>
+                            </div><br>
+                            <div>
                                 <label for="telefon">Telefon:</label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" id="telefon" name="telefon">
                                 &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
-                            </div>
-                            <br>
+                            </div><br>
                             <div>
                                 <label for="correu">Correu:</label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -68,25 +63,26 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <p class="missatgeAlerta">Camp Incorrecte*</p>
                             </div>
-                            </div>
-                        <br><br>
-                        <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
-                        <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
-                        <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
-
+                        <!-- ========== ????????????????? ========== -->
+                        </form>
+                        <!-- ========== ????????????????? ========== -->
                     </div>
-         <!-- ========== Row Flux ========== -->    
-
-         <div class="content-flux">
+                    <br><br>
+                    <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
+                    <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
+                    <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
+                </div>
+                <!-- ========== Row Flux ========== -->
+                <div class="content-flux">
                     <div class="back-index-butt btn">
-                    <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
+                        <button id="back-to-menu"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>                     
                     </div>
                     <input type="submit" value="Següent" id="seguent" class="boton">
                 </div>
-                </form>
-                
-
-                <!-- ========== End Rafael Jordi ============ -->
+                <!-- ========== ????????????????? ========== -->
+                <!-- </form> -->
+                <!-- ========== ????????????????? ========== -->
+                <!-- ========== End Codi Rafael ============ -->
             </div>
         </div>
         <!-- ============================================================== -->

@@ -17,8 +17,9 @@ function validacioNom () {
 function validacioTelefon () {
          let missatges = document.getElementsByClassName("missatgeAlerta");
          let caixaText = document.getElementsByTagName("input");
-         let test = /^\d{9}$/;
-         if (test.test(caixaText[1].value || !caixaText[1].value.length == 0)) {
+         var re = /^\d{9}$/;
+        //  if (test.test(caixaText[1].value || !caixaText[1].value.length == 0)) {
+            if (re.test(caixaText[1].value)) {
              //console.info("El numero esta be escrit.");
              missatges[1].style.display = 'none';
          } else {
@@ -29,12 +30,13 @@ function validacioTelefon () {
 function validacioCorreu () {
         let missatges = document.getElementsByClassName("missatgeAlerta");
         let caixaText = document.getElementsByTagName("input");
-        let test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-        if (test.test(caixaText[2].value) || !caixaText[2].value.length == 0) {
-            //console.info("El correu esta be escrit.");
+        var re = /([^a\d\d][a-zA-Z0-9]+)\@(\binspedralbes.cat\b)/;
+        console.info(caixaText[2].value);
+        if (re.test(caixaText[2].value)) {
+            console.info("El correu esta be escrit.");
             missatges[2].style.display = 'none';
         } else {
-            //console.info("El correu esta malament escrit.");
+            console.info("El correu esta malament escrit.");
             missatges[2].style.display = 'inline';
         }   
 }
@@ -138,8 +140,7 @@ window.onload = function() {
             }
         }
     }
-   
-
+    
     comandaAPasar += "TOTAL:" + preuTotal;
     document.getElementById("hiddenComanda").value = comandaAPasar;
 
@@ -152,10 +153,6 @@ window.onload = function() {
     taula = '<table><tr><td class="titol">TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
     document.getElementById('total').innerHTML = taula;
 
-
-
-
-    
     //console.info(comanda.PrimerPlat);
     //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
     //console.info(comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length));
@@ -198,56 +195,52 @@ window.onload = function() {
     document.getElementById('total').innerHTML = taula;
     */
 
-        let boto = document.getElementById("seguent");
-        boto.disabled=true;
+    let boto = document.getElementById("seguent");
+    boto.disabled=true;
+
+    let extraerUnidades = document.getElementsByClassName("unidades");
+    let unidadesParseadas = [];
+    for (let index = 0; index < extraerUnidades.length; index++) {
+        //console.info(extraerUnidades[index].textContent);
+        //console.info(extraerUnidades[index].textContent.substring(1));
+        unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
+        
+    }
+
+    let precios = document.getElementsByClassName("precio");
+    let preciosParseadas = [];
+    for (let index = 0; index < precios.length; index++) {
+        //console.info(precios[index].textContent);    
+        preciosParseadas[index] = parseFloat(precios[index].textContent);
+    }
+
+    let total = 0;
+    for (let index = 0; index < unidadesParseadas.length; index++) {
+        total += unidadesParseadas[index] * preciosParseadas[index];
+    }
+    //console.info("TOTAL: " + total);
     
-        let extraerUnidades = document.getElementsByClassName("unidades");
-        let unidadesParseadas = [];
-        for (let index = 0; index < extraerUnidades.length; index++) {
-            //console.info(extraerUnidades[index].textContent);
-            //console.info(extraerUnidades[index].textContent.substring(1));
-            unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
-            
-        }
 
-        let precios = document.getElementsByClassName("precio");
-        let preciosParseadas = [];
-        for (let index = 0; index < precios.length; index++) {
-            //console.info(precios[index].textContent);    
-            preciosParseadas[index] = parseFloat(precios[index].textContent);
-        }
+    document.getElementById('nom').addEventListener("blur", function(){
+        validacioNom ();
+    }) 
 
-        let total = 0;
-        for (let index = 0; index < unidadesParseadas.length; index++) {
-            total += unidadesParseadas[index] * preciosParseadas[index];
-        }
-        //console.info("TOTAL: " + total);
-       
+    document.getElementById('telefon').addEventListener("blur", function(){
+        validacioTelefon ();
+    })   
 
-        document.getElementById('nom').addEventListener("blur", function(){
-            validacioNom ();
-        }) 
-
-        document.getElementById('telefon').addEventListener("blur", function(){
-            validacioTelefon ();
-        })   
-
-        document.getElementById('correu').addEventListener("blur", function(){
-            validacioCorreu ();
-        })            
+    document.getElementById('correu').addEventListener("blur", function(){
+        validacioCorreu ();
+    })            
 
         
         
 };
-//document.getElementById('enrere').onclick = function () { location.href = "menu.php"; };
 
-
-// document.getElementById('enrere').addEventListener("click", function(){
-//     console.info("Enrere");
-//     location.href = "menu.php";
-// });
-
-//document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
-
+/*=============================================
+=            Previous Button                  =
+=============================================*/
+document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
+/*=====  End of Previous Button  ======*/
 
 setInterval('validarCamps()', 1000);
