@@ -1,0 +1,31 @@
+.taula-clients{
+    border: 1px solid var(--main-graphic-color);
+    max-width: 10000px;
+    background-color: transparent;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 8px;
+    margin: 4px 4px 4px 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    font-size: 16px;
+    font-weight: var(--w2-font);
+    min-height: 96px;
+    text-transform: uppercase;
+}
+ 
+a:link{
+    color: black;
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+a:hover{
+    color: grey;
+}
+ 
+ 

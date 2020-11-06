@@ -3,7 +3,6 @@
         include('error.php');
     }
     else {
-        include('menu.php');
-        setcookie('comprado', true,  strtotime("tomorrow"));
+        include('menu.php'); 
     }
 ?>

@@ -43,12 +43,15 @@
                             <h2>Seràs redirigit automàticament a la pàgina principal en 5 segons</h2>
                         </div>
                     </div>
+<<<<<<< Updated upstream
                 </div>
                 <div class="content-flux">
                     <!-- <div class="back-form-butt btn">
                         <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
                     </div> -->
                     <button id="send-end" class="send-end-butt">Tornar enrere</button>
+=======
+>>>>>>> Stashed changes
                 </div>
                 <!-- ========== End Codi Jordi ============ -->
             </div>

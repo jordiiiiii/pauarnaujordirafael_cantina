@@ -86,9 +86,6 @@
                     <input type="submit" value="Següent" id="seguent" class="boton">
                 </div>
                 </form>
-                
-
-                <!-- ========== End Rafael Jordi ============ -->
             </div>
         </div>
         <!-- ============================================================== -->

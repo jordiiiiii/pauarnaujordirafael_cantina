@@ -148,6 +148,7 @@ window.onload = function() {
     taula = '<table><tr><td class="titol">TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
     document.getElementById('total').innerHTML = taula;
 
+<<<<<<< Updated upstream
 
 
 
@@ -203,6 +204,19 @@ window.onload = function() {
             unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
             
         }
+=======
+    let boto = document.getElementById("seguent");
+    boto.disabled=true;
+
+    let extraerUnidades = document.getElementsByClassName("unidades");
+    let unidadesParseadas = [];
+    for (let index = 0; index < extraerUnidades.length; index++) {
+        //console.info(extraerUnidades[index].textContent);
+        //console.info(extraerUnidades[index].textContent.substring(1));
+        unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
+        
+    }
+>>>>>>> Stashed changes
 
         let precios = document.getElementsByClassName("precio");
         let preciosParseadas = [];
@@ -232,6 +246,14 @@ window.onload = function() {
         
 };
 
+<<<<<<< Updated upstream
+=======
+/*=============================================
+=            Previous Button                  =
+=============================================*/
+document.getElementById("back-to-menu").onclick = function () { location.href = "verifica.php"; };
+/*=====  End of Previous Button  ======*/
+>>>>>>> Stashed changes
 
 // document.getElementById('enrere').addEventListener("click", function(){
 //     console.info("Enrere");

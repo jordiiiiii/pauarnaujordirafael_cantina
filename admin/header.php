@@ -1,7 +1,11 @@
         <!-- ========== Header Start ========== -->
         <div class="header-row">
             <div class="logo-col">
+<<<<<<< Updated upstream
                 <a href = "index.php"><img src="img/logo.jpg" alt="logo" srcset=""></a>
+=======
+                <a href = "../index.php"><img src="../img/logo.jpg" alt="logo" srcset=""></a>
+>>>>>>> Stashed changes
             </div>
             <header class="title-col">
                 <div>
