@@ -1,11 +1,11 @@
-document.getElementById("enrere").onclick = function () { location.href = "menu.php"; };
+document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
 
-function ocultarMissatges () {
-    let missatges = document.getElementsByClassName("missatgeAlerta");
-    for (let index = 0; index < missatges.length; index++) {
-        missatges[index].style.display = 'none';
-    }
-}
+// function ocultarMissatges () {
+//     let missatges = document.getElementsByClassName("missatgeAlerta");
+//     for (let index = 0; index < missatges.length; index++) {
+//         missatges[index].style.display = 'none';
+//     }
+// }
 
 function validacioNom () {
     let missatges = document.getElementsByClassName("missatgeAlerta");
@@ -79,7 +79,7 @@ function validarCamps (){
 =============================================*/
 let menuMigdia = {'Mongeta Verda i Patata': '3.5', 'Cigrons Estofats': '3', 'Patates Duquessa': '2', 'Amanida Catalana': '2.5'
 , 'Pollastre al Forn amb Verduretes': '3.5', 'Truita de Carbassó i amanida': '2.5', 'Hamburgueses amb Patates Xips': '3.5', 'Pizza Casolana de Pernil i Formatge': '3.5'
-, 'Pastís de Formatge': '2.5', 'Iogurt': '1.5', 'Flam': '1.5', 'Fruita de Temporada': '1'};
+, 'Pastís de poma': '2.5', 'Iogurt': '1.5', 'Flam': '1.5', 'Fruita de Temporada': '1'};
 /*=====  End of List Menu Migdia  ======*/
 
 

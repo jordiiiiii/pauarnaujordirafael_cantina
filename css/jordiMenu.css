@@ -33,9 +33,9 @@
     font-size: 13px;
     font-weight: var(--w3-font);
 }
-/* .box-plat > p:nth-child(1) {
+.box-plat > p:nth-child(1) {
     z-index: -1;
-} */
+}
 
 
 /* LEVEL 4 */
@@ -82,7 +82,7 @@
     text-align: start;
 }
 #back-to-index {
-    background-color: transparent;
+    background-color: transparent; /* var(--main-bg-box-color); */ /* soluciona el problema de botons de box-plat al clickar sobre de lletra */
     color: var(--main-color);
     align-items: center;
 }

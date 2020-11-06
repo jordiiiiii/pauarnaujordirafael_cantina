@@ -51,7 +51,6 @@
                                 echo "</tr>";
                                 echo "</table>";  
                             }
-                            echo "<br>";
                             ?>  
                         </div>
                     </div>
@@ -80,10 +79,13 @@
         <!-- ========== End Footer ========== -->
     </div>
     <!-- third party js -->
-    <script src="js/changeConfirmationPageTitle.js"></script>
     <script type="text/javascript">document.getElementById("back-to-index").onclick = function () { location.href = "../index.php"; };</script>
     <!-- third party js ends -->
 </body>
 </html>
  
  
+ 
+ 
+ 
+

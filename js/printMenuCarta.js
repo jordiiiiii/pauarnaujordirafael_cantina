@@ -9,21 +9,26 @@ function checkLunchTime() {
 
     console.log(hour + ':' + minutes);
 
-    // Check hour between 11:30 and 21:30
-    if ((hour > 10 && hour < 22)) {
-        if ((hour > 11 && hour < 21)) {
+    // Check hour between 11:30 and 15:30
+    let hora1 = 11;
+    let minut1 = 30;
+    let hora2 = 15;
+    let minut2 = 30;
+
+    if ((hour > (hora1 - 1) && hour < (hora2 + 1))) {
+        if ((hour > hora1 && hour < hora2)) {
             return true;
         }
-        else if (hour == 11) {
-            if (minutes > 29) {
+        else if (hour == hora1) {
+            if (minutes > (minut1 - 1)) {
                 return true;
             }
             else {
                 return false;
             }
         }
-        else if (hour == 21) {
-            if (minutes < 30) {
+        else if (hour == hora2) {
+            if (minutes < minut2) {
                 return true;
             }
             else {
@@ -37,6 +42,7 @@ function checkLunchTime() {
     else {
         return false;
     }
+
 }
 /*=====  End of Check Hour Now  ======*/
 
@@ -46,7 +52,7 @@ function checkLunchTime() {
 =============================================*/
 let menuMigdia = {"Mongeta Verda i Patata": "3.5€", "Cigrons Estofats": "3€", "Patates Duquessa": "2€", "Amanida Catalana": "2.5€"
 , "Pollastre al Forn amb Verduretes": "3.5€", "Truita de Carbassó i amanida": "2.5€", "Hamburgueses amb Patates Xips": "3.5€", "Pizza Casolana de Pernil i Formatge": "3.5€"
-, "Pastís de Formatge": "2.5€", "Iogurt": "1.5€", "Flam": "1.5€", "Fruita de Temporada": "1€"};
+, "Pastís de poma": "2.5€", "Iogurt": "1.5€", "Flam": "1.5€", "Fruita de Temporada": "1€"};
 /*=====  End of List Menu Migdia  ======*/
 
 
@@ -57,6 +63,14 @@ let cartaMatiTarda = {"Cafè": "1€", "Cafè amb Llet": "1.2€", "Té": "1.5�
 , "Dònut": "1.5€", "Croissant": "1.5€", "Pastís de Formatge": "2.5€", "Poma": "1€"
 , "Entrepa de Fuet": "2.5€", "Bikini": "2.5€", "Pizza 4 Estacions": "3.5€", "Frankfurt": "3€"};
 /*=====  End of List Carta Mati | Tarda  ======*/
+
+/*=============================================
+=            List Carta Mati | Tarda Img      =
+=============================================*/
+let cartaMatiTardaImg = ["a_cafe.jpg", "a_cafellet.jpg", "a_te.jpg", "a_cocacola.jpg"
+                        , "b_donut.jpg", "b_croissant.jpg", "b_cheesecake.jpg", "b_poma.jpg"
+                        , "c_fuet.jpg", "c_bikini.jpg", "c_pizza.jpg", "c_frankfurt.jpg" ];
+/*=====  End of List Carta Mati | Tarda Img  ======*/
 
 
 /*=============================================
@@ -96,7 +110,7 @@ if (checkLunchTime()) {
 
     // Print Menu Right
     let htmlRightSideContentMenu = '                            <!-- ========== Row Title ======== -->';
-    htmlRightSideContentMenu += '                        <div class="title-right"><h3>Carretó de la Compra</h3></div>';
+    htmlRightSideContentMenu += '                        <div class="title-right"><h3>Comanda Usuari</h3></div>';
     htmlRightSideContentMenu += '                        <!-- ========== Row Price ========== -->';
     htmlRightSideContentMenu += '                        <div class="col-price">';
     htmlRightSideContentMenu += '                            <h4>Primer Plat</h4>';
@@ -135,14 +149,15 @@ if (checkLunchTime()) {
     for (var key in cartaMatiTarda) {
         // check if the property/key is defined in the object itself, not in parent
         if (cartaMatiTarda.hasOwnProperty(key)) {
-            htmlLeftSideContentCarta += '<div class="equalHMV eq box-carta">';
-            htmlLeftSideContentCarta += `<p>${key}</p>`;
-            htmlLeftSideContentCarta += `<p>${cartaMatiTarda[key]}</p>`;
+            htmlLeftSideContentCarta += '<div class="equalHMV box-carta">';
+            htmlLeftSideContentCarta += `<p class="flowText textNom">${key}</p>`;
+            htmlLeftSideContentCarta += `<p class="flowText textPreu">${cartaMatiTarda[key]}</p>`;
             htmlLeftSideContentCarta += '<div class="add-remove-btn">';
             htmlLeftSideContentCarta += `<div id="remove${i}" class="btn-carta remove">-</div>`;
             htmlLeftSideContentCarta += `<p id="num${i}" class="btn-carta num">${0}</p>`;
             htmlLeftSideContentCarta += `<div id="add${i}" class="btn-carta add">+</div>`;
             htmlLeftSideContentCarta += '</div>';
+            htmlLeftSideContentCarta += `<img src="img/${cartaMatiTardaImg[i - 1]}" />`;
             htmlLeftSideContentCarta += '</div>';
             i++;
         }
@@ -152,7 +167,7 @@ if (checkLunchTime()) {
 
     // Print Carta Mati | Tarda Right
     let htmlRightSideContentMenu = '                            <!-- ========== Row Title ======== -->';
-    htmlRightSideContentMenu += '                        <div class="title-right"><h3>Carretó de la Compra</h3></div>';
+    htmlRightSideContentMenu += '                        <div class="title-right"><h3>Comanda Usuari</h3></div>';
     htmlRightSideContentMenu += '                        <!-- ========== Row Price ========== -->';
     htmlRightSideContentMenu += '                        <div id="zona1" class="col-price">';
     htmlRightSideContentMenu += '                            <h4>Begudes Fredes i Calentes</h4>';

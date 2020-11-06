@@ -1,5 +1,5 @@
 AuthType Basic
 AuthName Documents
 AuthBasicProvider file
-AuthUserFile "/home/a18jorgornei/public_html/final/admin/.htpasswd"
+AuthUserFile "/home/a18jorgornei/public_html/presentacio/admin/.htpasswd"
 Require valid-user  

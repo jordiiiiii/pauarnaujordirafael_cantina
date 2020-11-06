@@ -10,7 +10,7 @@
    
     <?php include('includes.inc');?>
 
-    <link rel="stylesheet" href="css/cssRafael.css">
+    <link rel="stylesheet" href="css/rafaelFormulari.css">
 
 </head>
 <body>
@@ -45,7 +45,7 @@
                     <div class="content-right-side"><!-- ========== Aqui pintarem la graella amb una funcio de js ======== -->
                         <div align="left">
                             <br><br>
-                            <h2 class="titol">DATOS DE USUARIO</h2>
+                            <h2 class="titol">DADES DE USUARIO</h2>
                             <br>
                             <form action="confirmacio.php" method="POST">
                                 <div>
@@ -66,26 +66,27 @@
                                     <p class="missatgeAlerta">Camp Incorrecte*</p>
                                 </div>
                                 </div>
+                                <!-- <div class="back-index-butt btn">
+                                <button type="button" id="enrere">Enrere</button>
+                            </div> -->
+                            <input type="submit" value="Següent" id="seguent" class="boton"> 
                             <br><br>
                             <input type="hidden" id="hiddenNom" name="hiddenNom" value = "">
                             <input type="hidden" id="hiddenCorreu" name="hiddenCorreu" value = "">
                             <input type="hidden" id="hiddenComanda" name="hiddenComanda" value = "">
-                            <div class="back-index-butt btn">
-                                <button type="button" id="enrere">Enrere</button>
-                            </div>
-                            <input type="submit" value="Següent" id="seguent" class="boton">    
+                               
                         </div>
                     </div>
-                    
-         <!-- ========== Row Flux ========== -->    
+                    </form>
 
-         <div class="content-flux">
-                    <div class="back-index-butt btn">
-                    <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
+                                <!-- ========== Row Flux ========== -->    
+
+                    <div class="content-flux">
+                        <div class="back-index-butt btn">
+                            <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
+                        </div>
                     </div>
-                    <input type="submit" value="Següent" id="seguent" class="boton">
                 </div>
-                </form>
             </div>
         </div>
         <!-- ============================================================== -->

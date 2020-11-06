@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantina Pedralbes Confirmation</title>
     <?php include('includes.inc');?>
-    <link rel="stylesheet" href="css/rafaelFormulari.css">
 </head>
 <body>
     <!-- Begin Page -->
@@ -31,18 +30,34 @@
                 <!-- ========== Codi Pau Start ========== -->
                 <!-- ========== Row Main ========== -->
                 <div class="content-main">
-                    <h1>COMANDA COMPLETADA AMB ÈXIT</h1>
-                    <p id="gracies">Gràcies ${nom} per la teva compra</p>
-                    <p>Passa-ho a buscar a la cantina</p>
-                    <?php
-                        setcookie('comprado', true,  strtotime("tomorrow"));
-                        $to = "email";
-                        $subject = "Resguard comanda CIP";
-                        $txt = "comanda";
-                        $headers = "From: cantinapedralbes@inspedralbes.cat";
+                    <!-- ========== Column Left ======== -->
+                    <div class = "content-left-side">
+                        <h1>COMANDA COMPLETADA AMB ÈXIT</h1>
+                        <p>Passa-ho a buscar a la cantina</p>
+                        <?php
+                            $nombre = $_POST["hiddenNom"];
+                            echo "<br></br> Gràcies " . $nombre . " per la teva compra";
+                            setcookie('comprado', true,  strtotime("tomorrow"));
+                            $to = $_POST["hiddenCorreu"];
+                            $subject = "Resguard comanda CIP";
+                            $txt = "comanda" . $_POST["hiddenComanda"];
+                            $headers = "From: cantinapedralbes@inspedralbes.cat";
+                            
+                            mail($to,$subject,$txt,$headers);
+                            $direc = "./admin/pedidos/" . $_POST["hiddenCorreu"] . ".txt";
+                            $fh = fopen("$direc", 'w') or die("Se produjo un error al crear el archivo");
+                            $texto = " Comanda: " . $_POST["hiddenComanda"] ;
+                            fwrite($fh, $texto) or die("No se pudo escribir en el archivo");
+                            fclose($fh);
+                            echo "<br></br>S'ha enviat la teva comanda al teu correu";
+                            
+                            ?>
+                </div>
 
-                        mail($to,$subject,$txt,$headers);
-                    ?>
+                    <!-- ========= Column Right ======= --> 
+                    <div class = "content-right-side">                       
+                            <img src="img/confirmar.png"/>
+                    </div>
                 </div>
                 <!-- ========== Row Flux ========== -->             
                 <div class="content-flux">
@@ -63,7 +78,6 @@
     </div>
     <!-- third party js -->
     <script src="js/changeConfirmationPageTitle.js"></script>
-    <script src="js/confirmacio.js"></script>
     <script type="text/javascript">
         document.getElementById("send-end").onclick = function () { location.href = "index.php"; };
     </script>
