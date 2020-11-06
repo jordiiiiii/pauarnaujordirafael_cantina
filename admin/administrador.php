@@ -8,10 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <?php include('includes.inc');?>
-<<<<<<< Updated upstream
-=======
     <link rel="stylesheet" href="../css/arnauAdmin.css">
->>>>>>> Stashed changes
 </head>
 <body>
     <!-- Begin Page -->

@@ -148,63 +148,6 @@ window.onload = function() {
     taula = '<table><tr><td class="titol">TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
     document.getElementById('total').innerHTML = taula;
 
-<<<<<<< Updated upstream
-
-
-
-    
-    //console.info(comanda.PrimerPlat);
-    //console.info(comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_")));
-    //console.info(comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length));
-    //let preu = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
-    //console.info(preu.substring(0, preu.indexOf("€")));
-
-    /*
-    let preuTotal= parseFloat(0.0);
-    if (comanda.hasOwnProperty("PrimerPlat")){
-        let p1 = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
-        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
-        taula += '<tr><td>'+comanda.PrimerPlat.substring(0, comanda.PrimerPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
-        let preu = comanda.PrimerPlat.substring(comanda.PrimerPlat.indexOf("_")+1, comanda.PrimerPlat.length);
-        console.info(preu.substring(0, preu.indexOf("€")));
-        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
-    }
-    if (comanda.hasOwnProperty("SegonPlat")){
-        p1 = comanda.SegonPlat.substring(comanda.SegonPlat.indexOf("_")+1, comanda.SegonPlat.length);
-        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
-        taula += '<tr><td>'+comanda.SegonPlat.substring(0, comanda.SegonPlat.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
-        let preu = comanda.SegonPlat.substring(comanda.SegonPlat.indexOf("_")+1, comanda.SegonPlat.length);
-        console.info(preu.substring(0, preu.indexOf("€")));
-        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
-    }
-    if (comanda.hasOwnProperty("Postre")){
-        p1 = comanda.Postre.substring(comanda.Postre.indexOf("_")+1, comanda.Postre.length);
-        //console.info(p1.substring(p1.indexOf("_")+1, p1.length));
-        taula += '<tr><td>'+comanda.Postre.substring(0, comanda.Postre.indexOf("_"))+'</td><td>'+p1.substring(p1.indexOf("_")+1, p1.length)+'</td></tr>';
-        let preu = comanda.Postre.substring(comanda.Postre.indexOf("_")+1, comanda.Postre.length);
-        console.info(preu.substring(0, preu.indexOf("€")));
-        preuTotal += parseFloat(preu.substring(0, preu.indexOf("€")));
-    }
-
-    taula += "</table>";
-
-    document.getElementById('llistat').innerHTML = taula;
-
-    console.info(preuTotal);
-    taula = '<table><tr><td>TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
-    document.getElementById('total').innerHTML = taula;
-    */
-
-        let boto = document.getElementById("seguent");
-        boto.disabled=true;
-    
-        let extraerUnidades = document.getElementsByClassName("unidades");
-        let unidadesParseadas = [];
-        for (let index = 0; index < extraerUnidades.length; index++) {
-            unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
-            
-        }
-=======
     let boto = document.getElementById("seguent");
     boto.disabled=true;
 
@@ -216,7 +159,6 @@ window.onload = function() {
         unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
         
     }
->>>>>>> Stashed changes
 
         let precios = document.getElementsByClassName("precio");
         let preciosParseadas = [];
@@ -246,14 +188,6 @@ window.onload = function() {
         
 };
 
-<<<<<<< Updated upstream
-=======
-/*=============================================
-=            Previous Button                  =
-=============================================*/
-document.getElementById("back-to-menu").onclick = function () { location.href = "verifica.php"; };
-/*=====  End of Previous Button  ======*/
->>>>>>> Stashed changes
 
 // document.getElementById('enrere').addEventListener("click", function(){
 //     console.info("Enrere");
