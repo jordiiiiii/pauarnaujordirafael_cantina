@@ -1,12 +1,12 @@
 document.getElementById("back-to-menu").onclick = function () { location.href = "menu.php"; };
-
+ 
 // function ocultarMissatges () {
 //     let missatges = document.getElementsByClassName("missatgeAlerta");
 //     for (let index = 0; index < missatges.length; index++) {
 //         missatges[index].style.display = 'none';
 //     }
 // }
-
+ 
 function validacioNom () {
     let missatges = document.getElementsByClassName("missatgeAlerta");
     let caixaText = document.getElementsByTagName("input");
@@ -42,16 +42,16 @@ function validacioCorreu () {
             missatges[2].style.display = 'inline';
         }   
 }
-
+ 
 function validarCamps (){
     validacioNom ();
     validacioTelefon ();
     validacioCorreu ();
-
+ 
     let missatges = document.getElementsByClassName("missatgeAlerta");
     let pasarSeguent = false;     
     let botoasd = document.getElementById("seguent");
-
+ 
     for (let index = 0; index < missatges.length; index++) {
         if (missatges[index].style.display != "none") {
             pasarSeguent = false;
@@ -73,7 +73,7 @@ function validarCamps (){
        botoasd.disabled=true;
     }
 }
-
+ 
 /*=============================================
 =            List Menu Migdia                 =
 =============================================*/
@@ -81,8 +81,8 @@ let menuMigdia = {'Mongeta Verda i Patata': '3.5', 'Cigrons Estofats': '3', 'Pat
 , 'Pollastre al Forn amb Verduretes': '3.5', 'Truita de Carbassó i amanida': '2.5', 'Hamburgueses amb Patates Xips': '3.5', 'Pizza Casolana de Pernil i Formatge': '3.5'
 , 'Pastís de poma': '2.5', 'Iogurt': '1.5', 'Flam': '1.5', 'Fruita de Temporada': '1'};
 /*=====  End of List Menu Migdia  ======*/
-
-
+ 
+ 
 /*=============================================
 =            List Carta Mati | Tarda          =
 =============================================*/
@@ -90,7 +90,7 @@ let cartaMatiTarda = {'Cafè': '1', 'Cafè amb Llet': '1.2', 'Té': '1.5', 'Coca
 , 'Dònut': '1.5', 'Croissant': '1.5', 'Pastís de Formatge': '2.5', 'Poma': '1'
 , 'Entrepa de Fuet': '2.5', 'Bikini': '2.5', 'Pizza 4 Estacions': '3.5', 'Frankfurt': '3'};
 /*=====  End of List Carta Mati | Tarda  ======*/
-
+ 
 window.onload = function() {
     
     let comanda = localStorage.getItem('comanda');
@@ -106,9 +106,9 @@ window.onload = function() {
     //         console.info(cartaMatiTarda[key]);
     //     }
     // }
-
+ 
     //comanda = {"Mongeta Verda i Patata":1,"Pollastre al Forn amb Verduretes":1,"Iogurt":1};
-
+ 
     let taula = '<table><tr><td class="titol">PRODUCTE</td><td class="titol">UNITAT/S</td><td class="titol">PREU</td></tr>';
     let preuTotal= parseFloat(0.0);
     let comandaAPasar = "";
@@ -116,18 +116,19 @@ window.onload = function() {
         if (menuMigdia.hasOwnProperty(key)) {
             for (var key2 in comanda) {
                 if (key == key2) {
-                    taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+menuMigdia[key]+'</td></tr>';
+                    taula += '<tr><td>'+key+'</td><td id="unitat">'+comanda[key]+"u"+'</td><td>'+menuMigdia[key]+ "€"+'</td></tr>';
                     preuTotal += parseFloat(menuMigdia[key]*comanda[key]); 
                     comandaAPasar += key + "_" + comanda[key] + "_" + menuMigdia[key] + "/";
                 }
             }
         }
     }
+    
     for (var key in cartaMatiTarda) {
         if (cartaMatiTarda.hasOwnProperty(key)) {
             for (var key2 in comanda) {
                 if (key == key2) {
-                    taula += '<tr><td>'+key+'</td><td>'+comanda[key]+'</td><td>'+cartaMatiTarda[key]+'</td></tr>';
+                    taula += '<tr id="pp"><td>'+key+'</td><td id="unitat">'+comanda[key]+"u"+'</td><td>'+cartaMatiTarda[key]+"€"+'</td></tr>';
                     preuTotal += parseFloat(cartaMatiTarda[key]*comanda[key]); 
                     comandaAPasar += key + "_" + comanda[key] + "_" + cartaMatiTarda[key] + "/";
                 }
@@ -135,22 +136,22 @@ window.onload = function() {
         }
     }
    
-
-    comandaAPasar += "TOTAL:" + preuTotal;
+ 
+    comandaAPasar += '<div class="tfoot">TOTAL:' + preuTotal + "€";
     document.getElementById("hiddenComanda").value = comandaAPasar;
-
+ 
     console.log("COMANDA: "+document.getElementById("hiddenComanda").value);
-
-    taula += '</table>';
-
+ 
+    taula += '</div></table>';
+ 
     document.getElementById('llistat').innerHTML = taula;
-
-    taula = '<table><tr><td class="titol">TOTAL: </td><td>'+preuTotal+'</td></tr></table>';
+ 
+    taula = '<table><tr><td class="tfoot">TOTAL: </td><td id="preuTotal">'+preuTotal+"€"+'</td></tr></table>';
     document.getElementById('total').innerHTML = taula;
-
+ 
     let boto = document.getElementById("seguent");
     boto.disabled=true;
-
+ 
     let extraerUnidades = document.getElementsByClassName("unidades");
     let unidadesParseadas = [];
     for (let index = 0; index < extraerUnidades.length; index++) {
@@ -159,41 +160,42 @@ window.onload = function() {
         unidadesParseadas[index] = parseFloat(extraerUnidades[index].textContent.substring(1));
         
     }
-
+ 
         let precios = document.getElementsByClassName("precio");
         let preciosParseadas = [];
         for (let index = 0; index < precios.length; index++) {
             preciosParseadas[index] = parseFloat(precios[index].textContent);
         }
-
+ 
         let total = 0;
         for (let index = 0; index < unidadesParseadas.length; index++) {
             total += unidadesParseadas[index] * preciosParseadas[index];
         }       
-
+ 
         document.getElementById('nom').addEventListener("blur", function(){
             validacioNom ();
         }) 
-
+ 
         document.getElementById('telefon').addEventListener("blur", function(){
             validacioTelefon ();
         })   
-
+ 
         document.getElementById('correu').addEventListener("blur", function(){
             validacioCorreu ();
         })            
-
+ 
         
         
         
 };
-
-
+ 
+ 
 // document.getElementById('enrere').addEventListener("click", function(){
 //     console.info("Enrere");
 //     location.href = "menu.php";
 // });
-
-
-
+ 
+ 
+ 
 setInterval('validarCamps()', 1500);
+

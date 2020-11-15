@@ -9,9 +9,9 @@
     <title>Cantina Pedralbes Confirmation</title>
    
     <?php include('includes.inc');?>
-
+ 
     <link rel="stylesheet" href="css/rafaelFormulari.css">
-
+ 
 </head>
 <body>
     <!-- Begin Page -->
@@ -36,16 +36,16 @@
                 <div class="content-main">
                     <div class="content-left-side"><!-- ========== Aqui pintarem la graella amb una funcio de js ======== -->
                     <br><br>             
-                            <div id="llistat" align="left"></div>
+                            <div id="llistat"></div>
                             <br>
                             <div id="total"></div>
                     </div>
-
+ 
                     <!-- ========== Column Right ======= --> 
                     <div class="content-right-side"><!-- ========== Aqui pintarem la graella amb una funcio de js ======== -->
                         <div align="left">
                             <br><br>
-                            <h2 class="titol">DADES DE USUARIO</h2>
+                            <h2 class="titol">DADES USUARI</h2>
                             <br>
                             <form action="confirmacio.php" method="POST">
                                 <div>
@@ -78,12 +78,12 @@
                         </div>
                     </div>
                     </form>
-
+ 
                                 <!-- ========== Row Flux ========== -->    
-
+ 
                     <div class="content-flux">
                         <div class="back-index-butt btn">
-                            <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
+                            <button id="back-to-menu"><i style="font-size:14px" class="fas" aria-hidden="true"></i>  Previous Step</button>                        
                         </div>
                     </div>
                 </div>
@@ -102,3 +102,5 @@
     <!-- third party js ends -->
 </body>
 </html>
+ 
+

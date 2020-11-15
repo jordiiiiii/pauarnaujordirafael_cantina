@@ -6,6 +6,7 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
     <meta name="author" content="Pau Callejas Tovar">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/confirmacio.css">
     <title>Cantina Pedralbes Confirmation</title>
     <?php include('includes.inc');?>
 </head>
@@ -32,11 +33,14 @@
                 <div class="content-main">
                     <!-- ========== Column Left ======== -->
                     <div class = "content-left-side">
-                        <h1>COMANDA COMPLETADA AMB ÈXIT</h1>
+                        <div class="titulo">
+                            <h1>COMANDA COMPLETADA AMB ÈXIT</h1>
+                            <br/>
                         <p>Passa-ho a buscar a la cantina</p>
+                        <br/>
                         <?php
                             $nombre = $_POST["hiddenNom"];
-                            echo "<br></br> Gràcies " . $nombre . " per la teva compra";
+                            echo " Gràcies " . $nombre . " per la teva compra";
                             setcookie('comprado', true,  strtotime("tomorrow"));
                             $to = $_POST["hiddenCorreu"];
                             $subject = "Resguard comanda CIP";
@@ -52,11 +56,12 @@
                             echo "<br></br>S'ha enviat la teva comanda al teu correu";
                             
                             ?>
-                </div>
+                        </div>
+                    </div>
 
                     <!-- ========= Column Right ======= --> 
                     <div class = "content-right-side">                       
-                            <img src="img/confirmar.png"/>
+                            <img src="img/confirmacio.png" width="300px"/>
                     </div>
                 </div>
                 <!-- ========== Row Flux ========== -->             
@@ -64,7 +69,7 @@
                     <!-- <div class="back-form-butt btn">
                         <button id="back-to-form"><i style='font-size:14px' class='fas'>&#xf100;</i>  Previous Step</button>
                     </div> -->
-                    <button id="send-end" class="send-end-butt">The End</button>
+                    <button id="send-end" class="send-end-butt">Finalitza</button>
                 </div>
                 <!-- ========== End Codi Pau ============ -->
             </div>

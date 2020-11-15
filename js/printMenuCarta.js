@@ -10,7 +10,7 @@ function checkLunchTime() {
     console.log(hour + ':' + minutes);
 
     // Check hour between 11:30 and 15:30
-    let hora1 = 11;
+    let hora1 = 13;
     let minut1 = 30;
     let hora2 = 15;
     let minut2 = 30;
